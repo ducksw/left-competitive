@@ -1,10 +1,12 @@
-## INSTALAR LAS DEPENDENCIAS
+# Left competitive
+
+### INSTALAR LAS DEPENDENCIAS
 
 ```bash
 npm install
 ```
 
-## INICIAR SERVIDOR
+### INICIAR SERVIDOR
 
 ```bash
 npm run dev
