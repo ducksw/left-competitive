@@ -1,10 +1,10 @@
-# INSTALAR LAS DEPENDENCIAS
+## INSTALAR LAS DEPENDENCIAS
 
 ```bash
 npm install
 ```
 
-# INICIAR SERVIDOR
+## INICIAR SERVIDOR
 
 ```bash
 npm run dev
