@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/otro', (req, res) => {
-  res.send("otro");
+app.get('/otro2', (req, res) => {
+  res.send("otro2");
 });
 
 app.listen(port, () => {
