@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./database');
+const routes = require('./route');
 
 const app = express();
 const port = 3000;
@@ -14,14 +15,11 @@ app.set('view engine', 'hbs');
 // CONNECT DATABASE
 connectDB();
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
-app.get('/otro2', (req, res) => {
-  res.send("otro2");
-});
+// rutas 
+routes(app);
 
 app.listen(port, () => {
   console.log(`The app listening on port http://localhost:${port}/`);
 });
+
+
