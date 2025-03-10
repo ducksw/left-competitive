@@ -1,6 +1,4 @@
 const express = require('express');
-//const routes = require('./route');
-//const routesSteam = require('./routeSteam');
 const connectDB = require('./database');
 
 const app = express();
