@@ -6,5 +6,9 @@ module.exports = app => {
     res.render('index');
   });
 
+  app.get('/play.html', (req, res) => {
+    res.render('main');
+  });
+
   app.use(router);
 }
