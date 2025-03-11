@@ -7,4 +7,4 @@ const SteamUserSchema = new Schema({
   avatar: { type: String },
 });
 
-module.exports = model.('UserSteamModel', SteamUserSchema);
+module.exports = model('UserSteamModel', SteamUserSchema);
