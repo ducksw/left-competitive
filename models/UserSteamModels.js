@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { schema, model } = mongoose;
+const { Schema, model } = mongoose;
 
 const SteamUserSchema = new Schema({
   steamId: { type: String, required: true, unique: true },
