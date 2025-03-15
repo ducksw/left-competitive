@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+body {
+  background-color: black;
+	/* background-color: #111111; */
+	/* background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/293260/8c18b754491ec5590da808775069257282efd48f.jpg); */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	color: white;
+	font-family: 'Inter',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+a {
+  text-decoration: none;
+}
+
+.main {
+	display: flex;
+}
+
+.page {
+	display: flex;
+  flex-direction: column;
+	max-width: 100%;
+	width: 1100px;
+  margin: auto;
+}
+
+.title img {
+  max-width: 100%;
+  width: 300px;
+}
+
+.box {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
+  background-color: #1B1A1B;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.nav a {
+  color: white;
+}
+
+.left-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.right-box {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  background-color: #1B1A1B;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.box-clips {
+  display: flex;
+  flex-direction: column;
+  background-color: #1B1A1B;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.title-clips {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title-clips span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btn-add {
+  display: flex;
+}
+
+.btn-add a {
+  color: white;
+  text-align: center;
+  background-color: #444444;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  width: 100px;
+}
+
+.btn-add a:hover {
+  background-color: #333333;
+}
+
+hr {
+  width: 100%;
+  border: 1px solid #333333;
+}
+
+#ex1 {
+  background-color: #111111;
+}
+
+.add_video {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add_video input {
+  font-size: 15px;
+  background-color: #333333;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.btn-modal {
+  display: flex;
+  justify-content: end;
+}
+
+.btn-modal button {
+  display: flex;
+  justify-content: center;
+  background-color: #dc3545;
+  border: 1px solid #dc3545;
+  outline: none;
+  border-radius: 10px;
+  max-width: 100%;
+  width: 100px;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  margin-top: 10px;
+}
+
+.steam-user {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.icon {
+  max-width: 100%;
+  width: 70px;
+}
+
+.info-user-steam {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 40%;
+}
+
+.off {
+  font-size: 12px;
+  color: grey;
+}
+
+.btn-steam {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-steam {
+  background: linear-gradient(180deg, #FC0732 0%, #6E0102 100%);
+  font-size: 13px;
+  padding: 10px;
+  max-width: 100%;
+  width: 120px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+
+.stats-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-main {
+  font-weight: bold;
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.box-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stats-info {
+  display: flex;
+}
+
+.stats-info b {
+  display: inline-block;
+  width: 100%;
+  color: grey;
+}
+
+.box-players {
+  display: flex;
+  flex-direction: column;
+}

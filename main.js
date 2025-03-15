@@ -12,6 +12,9 @@ app.use(express.static(__dirname + "/public"));
 app.set("views", __dirname + "/views");
 app.set('view engine', 'hbs');
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // CONNECT DATABASE
 connectDB();
 
@@ -21,5 +24,3 @@ routes(app);
 app.listen(port, () => {
   console.log(`The app listening on port http://localhost:${port}/`);
 });
-
-

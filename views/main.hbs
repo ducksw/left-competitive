@@ -1,1 +1,97 @@
-MAIN
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- jQuery Modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <title>Welcome to Left Competitive</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="main">
+  <div class="page">
+    <a href="play.html" class="title"><img src="/image/title.png"></a>
+    <div class="box">
+      <div class="left-box">
+        <div class="nav">
+          <a href="" style="background-color: brown;">Home</a>
+          <a href="">Rules</a>
+          <a href="">Stats</a>
+          <a href="">Team</a>
+        </div>
+
+        <div class="box-"> 
+        </div>
+
+        <div class="box-clips"> 
+          <div class="title-clips">
+            <span>Clips lefsito</span>
+            <div class="btn-add">
+              <a href="#ex1" rel="modal:open">Add Clips</a>
+            </div>
+          </div>
+            <hr/>
+        </div>
+      </div>
+
+      <div class="right-box">
+        <div class="steam-user">
+          <img class="icon" src="/image/icon.png">
+          <div class="info-user-steam">
+            <b>Invitado</b>
+            <span class="off">No iniciado Sesión</span>
+          </div>
+          <div class="btn-steam">
+            <a href="" class="login-steam">Login with Steam</a>
+          </div>
+        </div>
+        <hr>
+
+        <div class="stats-main">
+          <span class="title-main">Stats</span>
+          <hr/>
+          <div class="box-stats">
+            <div class="stats-info">
+              <b>Players:</b>
+              <span>0</span>
+            </div>
+            <div class="stats-info">
+              <b>Games:</b>
+              <span>0</span>
+            </div>
+            <div class="stats-info">
+              <b>Clips:</b>
+              <span>{{video_length}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="box-players">
+          <span class="title-main">Players</span>
+          <hr/>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal HTML embedded directly into document -->
+<div id="ex1" class="modal">
+  <form class="add_video" method="POST">
+    <span>Titúlo:</span>
+    <input type="text" name="title_link" required placeholder="Titúlo">
+    <span>Link:</span>
+    <input type="text" name="link_yt" required placeholder="https://www.youtube.com/watch?v=">
+    <div class="btn-modal">
+      <button type="submit">Subir clip</button>
+    </div>
+  </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+</body>
+</html>
