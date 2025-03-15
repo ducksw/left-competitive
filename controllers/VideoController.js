@@ -1,20 +1,6 @@
 const vd = {};
 const Video = require('../models/VideoModel');
 
-vd.index = async (req, res) => {
-  try {
-    const videos = await Video.find();
-    const video_length = videos.length;
-
-    videos.reverse();
-    console.log("videos encontrados", videos, video_length);
-
-    res.render('main', { videos, video_length });
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 vd.video_create = async (req, res) => {
   try {
     const { title_link, link_yt } = req.body;
@@ -28,6 +14,16 @@ vd.video_create = async (req, res) => {
     await newVideo.save();
 
     res.redirect('play.html');
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+vd.video_view = async (req, res) => {
+  try {
+    const video_id = req.query.id;
+    const videos = await Video.findById({_id: video_id});
+    res.render('clips', { video_id, videos });
   } catch (error) {
     console.log(error);
   }

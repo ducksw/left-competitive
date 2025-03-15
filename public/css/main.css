@@ -161,7 +161,12 @@ hr {
 
 .icon {
   max-width: 100%;
-  width: 70px;
+  width: 60px;
+}
+
+.icon2 {
+  max-width: 100%;
+  width: 60px;
 }
 
 .info-user-steam {
@@ -173,24 +178,45 @@ hr {
 
 .off {
   font-size: 12px;
-  color: grey;
+  /* color: grey; */
+  color: #ff6961;
+  font-weight: bold;
+}
+
+.on {
+  font-size: 12px;
+  /* color: grey; */
+  color: #77dd77;
+  font-weight: bold;
 }
 
 .btn-steam {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin: auto;
+  height: 100%;
+}
+
+.logout {
+  display: flex;
+  background-color: #dc3545;
+  border: 1px solid #FC0732;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
 }
 
 .login-steam {
+  display: flex;
+  gap: 5px;
   background: linear-gradient(180deg, #FC0732 0%, #6E0102 100%);
   font-size: 13px;
   padding: 10px;
   max-width: 100%;
-  width: 120px;
+  width: 125px;
   border-radius: 10px;
   color: white;
   text-align: center;
+  align-items: center;
 }
 
 .stats-main {
@@ -223,4 +249,137 @@ hr {
 .box-players {
   display: flex;
   flex-direction: column;
+}
+
+.box-image {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.box-image img {
+  max-width: 100%;
+  width: 200px;
+  height: 130px;
+  border-radius: 5px;
+}
+
+.videos-box {
+  display: flex;
+  flex-direction: column;
+  background-color: #111111;
+  padding: 10px;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+.title-video {
+  color: grey;
+  font-size: 13px;
+  width: 200px;
+  font-weight: bold;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.no-clip {
+  margin: auto;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.btn-clip {
+  display: flex;
+  /* justify-content: end; */
+  /* position: absolute; */
+  /* background-color: gold; */
+}
+
+.btn-clip a {
+  color: white;
+  /* background: linear-gradient(180deg, #FC0732 0%, #6E0102 100%); */
+  background-color: red;
+  padding: 5px;
+  width: 50px;
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 13px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.btn-clip a:hover {
+  background-color: darkred;
+}
+
+.image-clip {
+  max-width: 100%;
+  width: 200px;
+  height: 130px;
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-clip:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px #1B1A1B;
+}
+
+.box-carr {
+  display: flex;
+  background-color: #1B1A1B;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#carr-image {
+  display: flex;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.img-carrjs {
+  max-width: 100%;
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.all_user {
+  display: flex;
+  flex-direction: column;
+  background-color: #111111;
+  border-radius: 5px;
+}
+
+.user-steam {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.all_user img {
+  max-width: 100%;
+  width: 35px;
+  border-radius: 5px;
 }

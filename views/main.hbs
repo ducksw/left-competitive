@@ -6,6 +6,7 @@
   <!-- jQuery Modal -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <title>Welcome to Left Competitive</title>
   <link rel="stylesheet" href="/css/main.css">
 </head>
@@ -22,7 +23,8 @@
           <a href="">Team</a>
         </div>
 
-        <div class="box-"> 
+        <div class="box-carr"> 
+          <div id="carr-image"></div>
         </div>
 
         <div class="box-clips"> 
@@ -32,30 +34,61 @@
               <a href="#ex1" rel="modal:open">Add Clips</a>
             </div>
           </div>
-            <hr/>
+          <hr/>
+          <div class="box-image">
+            {{#if videos}}
+              {{#each videos}}
+                <div class="videos-box">
+                  {{!-- <div class="btn-clip">
+                    <a href="play.html/clip?id={{this._id}}">Ver clip</a>
+                  </div> --}}
+                  <a href="play.html/clip?id={{this._id}}"><img class="image-clip" src="https://img.youtube.com/vi/{{this.thumbnail_url}}/maxresdefault.jpg"></a>
+                  <span class="title-video">{{this.title_link}}</span>
+                </div>
+              {{/each}}
+              {{else}}
+              <span class="no-clip">No hay clips</span>
+            {{/if}}
+          </div>
         </div>
       </div>
 
       <div class="right-box">
         <div class="steam-user">
-          <img class="icon" src="/image/icon.png">
+          {{#if displayName}}
+            <a href="{{profileurl}}"><img class="icon2" src="{{avatar}}"></a>
+          {{else}}
+            <img class="icon" src="/image/icon.png">
+          {{/if}}
           <div class="info-user-steam">
-            <b>Invitado</b>
-            <span class="off">No iniciado Sesión</span>
+            {{#if displayName}}
+              <b>{{displayName}}</b>
+            {{else}}
+              <b>Invitado</b>
+            {{/if}}
+            {{#if displayName}}
+              <span class="on">Iniciado Sesión</span>
+            {{else}}
+              <span class="off">No iniciado Sesión</span>
+            {{/if}}
           </div>
           <div class="btn-steam">
-            <a href="" class="login-steam">Login with Steam</a>
+            {{#if displayName}}
+              <a href="/logout" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+            {{else}}
+              <a href="/auth/steam" class="login-steam"><i class="fa-brands fa-steam"></i> Login with Steam</a>
+            {{/if}}
           </div>
         </div>
         <hr>
 
         <div class="stats-main">
-          <span class="title-main">Stats</span>
+          <span class="title-main">Stats (Global)</span>
           <hr/>
           <div class="box-stats">
             <div class="stats-info">
               <b>Players:</b>
-              <span>0</span>
+              <span>{{steam_length}}</span>
             </div>
             <div class="stats-info">
               <b>Games:</b>
@@ -71,6 +104,14 @@
         <div class="box-players">
           <span class="title-main">Players</span>
           <hr/>
+          <div class="all_user">
+            {{#each steam}}
+            <div class="user-steam">
+              <a href="{{this.profileurl}}" target="_blank"><img src="{{this.avatar}}"></a>
+              <span>{{this.displayName}}</span>
+            </div>
+            {{/each}}
+          </div>
         </div>
 
       </div>
@@ -93,5 +134,6 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<script src="/js/carrusel.js"></script>
 </body>
 </html>
