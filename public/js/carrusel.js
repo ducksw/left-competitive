@@ -31,5 +31,3 @@ function image_rand() {
 image_rand()
 
 setInterval(image_rand, 5000);
-
-

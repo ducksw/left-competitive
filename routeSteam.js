@@ -9,6 +9,7 @@ module.exports = app => {
     passport.authenticate("steam", { failureRedirect: "/" }),
     (req, res) => {
       if (req.user) {
+        req.session.steamId = req.user.steamId;
         req.session.displayName = req.user.displayName;
         req.session.avatar = req.user.avatar;
         req.session.profileurl = req.user.profileurl;

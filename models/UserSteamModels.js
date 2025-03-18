@@ -6,7 +6,8 @@ const SteamUserSchema = new Schema({
   displayName: { type: String },
   avatar: { type: String },
   profileurl: { type: String },
-  //elo: { type: String },
+  elo: { type: String, default: "800" },
+  //point: { type: String },
 });
 
 module.exports = model('UserSteamModel', SteamUserSchema);

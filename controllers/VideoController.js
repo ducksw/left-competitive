@@ -22,8 +22,10 @@ vd.video_create = async (req, res) => {
 vd.video_view = async (req, res) => {
   try {
     const video_id = req.query.id;
-    const videos = await Video.findById({_id: video_id});
-    res.render('clips', { video_id, videos });
+    const videos = await Video.findById({ _id: video_id });
+    const all_clip = await Video.find();
+    all_clip.reverse();
+    res.render('clips', { videos, all_clip, video_id });
   } catch (error) {
     console.log(error);
   }

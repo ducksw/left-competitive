@@ -58,6 +58,7 @@ passport.use(
             steamId: profile.id,
             displayName: profile.displayName,
             profileurl: profile._json.profileurl,
+            elo: profile.elo,
             avatar: profile.photos[2].value,
           });
 
