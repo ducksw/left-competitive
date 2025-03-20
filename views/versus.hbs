@@ -45,7 +45,7 @@
               <div class="creator">
                 <span class="code-main">Code: <span id="code" class="code">{{game.code}}</span> <span id="copy"><i class="fa-solid fa-copy"></i></span></span>
                 <div class="creator-btn">
-                  <a href="" class="match">Emparejar</a>
+                  <a href="#" class="match" data-code="{{game.code}}" id="match">Emparejar</a>
                   <a href="" class="delete">Eliminar</a>
                 </div>
               </div>
@@ -66,21 +66,21 @@
                   {{/each}}
                   <a href="/play.html" class="exit">Salir</a>
                 </div>
-              {{else}}
-              <div class="part">
-                <form action="/play.html/createGame" method="POST">
-                  <button type="submit" class="create">Crear <span class="red">V</span>/<span class="blue">S</span></button>
-                </form>
-                <div class="join-party">
-                  <form action="/joinGame" method="POST" id="joinGameForm">
-                    <input type="text" placeholder="Code" name="code" required>
-                    <button type="submit">Join</button>
-                  </form>
-                </div>
-              </div>
-              <span class="desp">"¡Juega con amigos, crea o únete a una fiesta!" 🎮🔥</span>
             {{/if}}
           </div>
+        </div>
+        
+        <div id="teamA">
+          {{#each game.teamA}}
+            <img src="{{avatar}}" alt="{{displayName}}" width="50">
+            {{displayName}}
+          {{/each}}
+        </div>
+        <div id="teamB">
+          {{#each game.teamB}}
+            <img src="{{avatar}}" alt="{{displayName}}" width="50">
+            {{displayName}}
+          {{/each}}
         </div>
 
         <div class="box-clips"> 
@@ -95,7 +95,7 @@
             {{#if video_i}}
               {{#each video_i}}
                 <div class="videos-box">
-                  <a href="play.html/clip?id={{this._id}}"><img class="image-clip" src="https://img.youtube.com/vi/{{this.thumbnail_url}}/maxresdefault.jpg"></a>
+                  <a href="/play.html/clip?id={{this._id}}"><img class="image-clip" src="https://img.youtube.com/vi/{{this.thumbnail_url}}/maxresdefault.jpg"></a>
                   <span class="title-video">{{this.title_link}}</span>
                 </div>
               {{/each}}

@@ -16,6 +16,10 @@ module.exports = app => {
   router.get('/play.html/clip', VIDEO.video_view);
   router.post('/play.html/createGame', GAME.createGame);
   router.post('/joinGame', GAME.joinGame);
+  router.get('/play.html/game', GAME.allAgame);
+  router.get('/play.html/versus', GAME.indexGame);
+  router.post('/deletePlayer', GAME.deletePlayer);
+  router.post('/match', GAME.match);
 
   app.use(router);
 }

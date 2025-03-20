@@ -3,6 +3,10 @@ const Video = require('../models/VideoModel');
 
 vd.video_create = async (req, res) => {
   try {
+    if (!req.isAuthenticated()) {
+      return res.send("Debes iniciar sesión con Steam para subir clips");
+    }
+
     const { title_link, link_yt } = req.body;
 
     const newVideo = new Video({
