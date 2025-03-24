@@ -9,6 +9,9 @@ mn.index = async (req, res) => {
     const steam = await Steam.find();
     const gm = await Game.find();
 
+    // logica para ver quien tiene mas elo
+    steam.sort((a, b) => (b.elo || 800) - (a.elo || 800));
+
     const video_length = video_i.length;
     const steam_length = steam.length;
     const game_length = gm.length;

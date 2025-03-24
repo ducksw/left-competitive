@@ -7,14 +7,45 @@
   <link rel="stylesheet" href="/css/game.css">
 </head>
 <body>
-  
+<div class="page">
+  <div class="nav">
+    <span class="title">[REGISTERED GAMES]</span>
+    <a href="/play.html">Home</a>
+    <a href="">Rules</a>
+    <a href="">Stats</a>
+    <a href="" id="game">Games</a>
+  </div>
+  {{#if games}}
+    {{#each games}}
+      <div class="game">
+        <div class="box-game">
+          <div id="teamA">
+            {{#each teamA}}
+              <span class="teama">TEAM A - SUPERVIVIENTE</span>
+              <div class="image-team">
+                <img src="{{avatar}}" alt="{{displayName}}">
+              </div>
+              <span class="point">Campaign Final: {{points}}</span>
+            {{/each}}
+          </div>
+          <span class="vs">VERSUS</span>
+          <div id="teamB">
+            {{#each teamB}}
+              <span class="teamb">TEAM B - INFECTADO</span>
+              <div class="image-team">
+                <img src="{{avatar}}" alt="{{displayName}}" width="50"><br/>
+              </div>
+              <span class="point">Campaign Final: {{points}}</span>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    {{/each}}
+    {{else}}
+    <div class="box-no"><span>NO HAY PARTIDAS GUARDADAS</span></div>
+  {{/if}}
+</div>
 </body>
 </html>
-{{#each games}}
-{{this.code}}<br/>
-  {{#if players.length}}
-    {{#each players}}
-      {{this.displayName}}<br/>
-    {{/each}}
-  {{/if}}
-{{/each}}
+
+

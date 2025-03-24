@@ -20,6 +20,11 @@ module.exports = app => {
   router.get('/play.html/versus', GAME.indexGame);
   router.post('/deletePlayer', GAME.deletePlayer);
   router.post('/match', GAME.match);
+  router.get('/play.html/match', GAME.matchView);
+  router.get('/play.html/stats', GAME.stats);
+
+  // ADMIN
+  router.get('/play.html/admin', GAME.adminBoard);
 
   app.use(router);
 }

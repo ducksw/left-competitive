@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<h1>Emparejamiento</h1>
+
+<h2>Equipo A</h2>
+<ul>
+  {{#each game.teamA}}
+    <li>{{this.avatar}}</li>
+    <li>{{this.displayName}}</li>
+  {{/each}}
+</ul>
+
+<h2>Equipo B</h2>
+<ul>
+  {{#each game.teamB}}
+    <li>{{this.avatar}}</li>
+    <li>{{this.displayName}}</li>
+  {{/each}}
+</ul>
+
+<a href="/play.html">Volver al inicio</a>
+</body>
+</html>

@@ -14,6 +14,10 @@ const port = 3000;
 
 // ### CONFIG HBS ###
 const hbs = require('hbs');
+hbs.registerHelper('increment', function(value) {
+  return value + 1;
+});
+
 hbs.registerPartials(__dirname + '/views/partials', function (err) {});
 app.use(express.static(__dirname + "/public"));
 app.set("views", __dirname + "/views");

@@ -19,7 +19,6 @@ gm.indexGame = async (req, res) => {
     const { code } = req.query;
 
     let game = null;
-    let isCreator = false;
 
     if (code) {
       game = await Game.findOne({ code });
@@ -37,6 +36,8 @@ gm.indexGame = async (req, res) => {
 
 gm.createGame = async (req, res) => {
   try {
+    //const isMatched = false;
+
     if (!req.session.steamId) {
       return res.status(401).send("Debes iniciar sesión con Steam para crear una partida.");
     }
@@ -140,6 +141,7 @@ gm.deletePlayer = async (req, res) => {
 gm.allAgame = async (req, res) => {
   try {
     const games = await Game.find();
+    games.reverse();
     console.log(games);
 
     res.render('games', { games });
@@ -160,25 +162,70 @@ gm.match = async (req, res) => {
       return res.send("NO HAY SUFICIENTES JUGADORES");
     }
 
-    players = players.sort(() => Math.random() - 0.5); // combinar judaores aleatoriamente
+    players = players.sort(() => Math.random() - 0.5); // combinar jugadores aleatoriamente
 
-    const teamA = players.slice(0, Math.ceil(players.length / 2));
-    const teamB = players.slice(Math.ceil(players.length / 2));
+    // logica de distribucion de equipos
+    const teamA = players.slice(0, Math.ceil(players.length/2));
+    const teamB = players.slice(Math.ceil(players.length/2));
 
     game.teamA = teamA;
     game.teamB = teamB;
-
+    //game.isMatched = true
     await game.save();
+    /*
+    await Game.findOneAndUpdate(
+      { code },
+      { teamA, teamB },
+      { new: true }
+    );
+    */
 
     console.log("Emparejamiento completado:");
     console.log("Team A:", teamA);
     console.log("Team B:", teamB);
 
-    res.json({ teamA, teamB });
+    //res.json({ teams: [teamA, teamB] });
+    //return res.json({ success: true, teams: { teamA, teamB } });
+    //return res.redirect(`/match/${game.code}`);
+    return res.redirect(`/play.html/match?code=${game.code}`);
 
   } catch (error) {
     console.log(error);
   }
+}
+
+gm.matchView = async (req, res) => {
+  try {
+    const { code } = req.query;
+    const game = await Game.findOne({ code });
+
+    if (!game) {
+      return res.send("NO SE ENCONTRO LA PARTIDA");
+    }
+
+    res.render('match', { game });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+gm.stats = async (req, res) => {
+  try {
+    const steam = await Steam.find();
+
+    // logica para ver quien tiene mas elo
+    steam.sort((a, b) => (b.elo || 800) - (a.elo || 800));
+
+    console.log(steam);
+
+    res.render('stats', { steam });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+gm.adminBoard = async (req, res) => {
+  res.render('admin');
 }
 
 module.exports = gm;
