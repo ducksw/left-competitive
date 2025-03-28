@@ -3,18 +3,185 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <!-- jQuery Modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Welcome to Left Competitive</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/match.css">
 </head>
 <body>
-<h1>Emparejamiento</h1>
+<div class="main">
+  <div class="page">
+    <a href="/play.html" class="title"><img src="/image/title.png"></a>
+    <div class="box">
+      <div class="left-box">
+        <div class="nav">
+          <a href="/play.html">Home</a>
+          <a href="">Rules</a>
+          <a href="/play.html/stats">Stats</a>
+          <a href="game">Games</a>
+        </div>
 
+        {{#if games}}
+  <div class="match-container">
+    <div class="match-box">
+      <div class="team team-a">
+        <h2 class="team-title">Team Survivor</h2>
+        <img class="team-logo" src="/image/survivor.png">
+        <div class="players">
+          {{#each games.teamA}}
+            <div class="player">
+              <span class="player-name">{{this.displayName}}</span>
+              <span class="player-points">{{this.points}}</span>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="versus-box">
+        <span class="versus-text">VERSUS</span>
+        <div class="score">
+          <span class="score-value">{{games.teamA.[0].points}}</span> : <span class="score-value">{{games.teamB.[0].points}}</span>
+        </div>
+      </div>
+
+      <div class="team team-b">
+        <h2 class="team-title">Team Infected</h2>
+        <img class="team-logo" src="/image/hunter.png">
+        <div class="players">
+          {{#each games.teamB}}
+            <div class="player">
+              <span class="player-name">{{this.displayName}}</span>
+              <span class="player-points">{{this.points}}</span>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}
+
+{{!-- 
+        {{#if games}}
+        <div class="match-versus">
+            <div class="box-team">
+              <div class="team-a">
+                <span>Team Survivor</span>
+                <img src="/image/survivor.png">
+                {{#each games.teamA}}
+                  <span>{{this.displayName}}</span>
+                {{/each}}
+              </div>
+              <div class="vs">
+                <span class="versus">VERSUS</span>
+                <span>{{#each games.teamA}} <span class="surv">{{points}}{{/each}}</span> : {{#each games.teamB}} <span class="infe">{{points}}</span>{{/each}}</span>
+              </div>
+              <div class="team-b">
+                <span>Team Infected</span>
+                <img src="/image/hunter.png">
+                {{#each games.teamB}}
+                  <span>{{this.displayName}}</span>
+                {{/each}}
+              </div>
+            </div>
+        </div>
+        {{/if}} --}}
+
+      </div>
+
+      <div class="right-box">
+        <div class="steam-user">
+          {{#if displayName}}
+            <a href="{{profileurl}}" target="_blank"><img class="icon2" src="{{avatar}}"></a>
+          {{else}}
+            <img class="icon" src="/image/icon.png">
+          {{/if}}
+          <div class="info-user-steam">
+            {{#if displayName}}
+              <b>{{displayName}}</b>
+            {{else}}
+              <b>Invitado</b>
+            {{/if}}
+            {{#if displayName}}
+              <span class="on">Sesión Iniciada</span>
+            {{else}}
+              <span class="off">No iniciado Sesión</span>
+            {{/if}}
+          </div>
+          <div class="btn-steam">
+            {{#if displayName}}
+              <a href="/logout" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+            {{else}}
+              <a href="/auth/steam" class="login-steam"><i class="fa-brands fa-steam"></i> Login with Steam</a>
+            {{/if}}
+          </div>
+        </div>
+        <hr>
+
+        <div class="stats-main">
+          <span class="title-main">Stats (Global)</span>
+          <hr/>
+          <div class="box-stats">
+            <div class="stats-info">
+              <b>Players:</b>
+              <span>{{steam_length}}</span>
+            </div>
+            <div class="stats-info">
+              <b>Games:</b>
+              <span>{{game_length}}</span>
+            </div>
+            <div class="stats-info">
+              <b>Clips:</b>
+              <span>{{video_length}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="box-players">
+          <span class="title-main">Players <span class="st-length">({{steam_length}})</span></span>
+          <hr/>
+          <div class="all_user">
+            {{#each steam}}
+            <div class="user-steam">
+              <a href="{{this.profileurl}}" target="_blank"><img src="{{this.avatar}}"></a>
+              <span>{{this.displayName}}</span>
+              <div class="elo">
+                <span><span class="cor">[</span> <span class="elo-number">{{this.elo}}</span> <span class="cor">]</span></span>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal HTML embedded directly into document -->
+<div id="ex1" class="modal">
+  <form class="add_video" method="POST">
+    <span>Titúlo:</span>
+    <input type="text" name="title_link" required placeholder="Titúlo">
+    <span>Link:</span>
+    <input type="text" name="link_yt" required placeholder="https://www.youtube.com/watch?v=">
+    <div class="btn-modal">
+      <button type="submit">Subir clip</button>
+    </div>
+  </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<script src="/js/redes.js"></script>
+</body>
+</html>
+
+
+<!--
 <h2>Equipo A</h2>
-<ul>
-  {{#each game.teamA}}
-    <li>{{this.avatar}}</li>
-    <li>{{this.displayName}}</li>
-  {{/each}}
-</ul>
 
 <h2>Equipo B</h2>
 <ul>
@@ -27,3 +194,8 @@
 <a href="/play.html">Volver al inicio</a>
 </body>
 </html>
+-->
+
+<!--
+http://localhost:3000/play.html/match?code=0WC0SV3kcga0vY6W
+-->

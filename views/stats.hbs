@@ -1,3 +1,13 @@
-{{#each steam}}
-<div>{{increment @index}} {{this.displayName}} -> ELO: {{this.elo}}</div>
-{{/each}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  {{#each steam}}
+  <div>{{increment @index}} {{this.displayName}} -> ELO: {{this.elo}} -> DAMAGE: {{this.damage}} -> KILLS: {{this.kills}}</div>
+  {{/each}}
+</body>
+</html>

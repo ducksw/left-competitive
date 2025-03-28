@@ -197,13 +197,24 @@ gm.match = async (req, res) => {
 gm.matchView = async (req, res) => {
   try {
     const { code } = req.query;
-    const game = await Game.findOne({ code });
 
-    if (!game) {
+    // length
+    const video_i = await Video.find();
+    const steam = await Steam.find();
+    const game_i = await Game.find();
+
+
+    const games = await Game.findOne({ code });
+
+    const video_length = video_i.length;
+    const steam_length = steam.length;
+    const game_length = game_i.length;
+
+    if (!games) {
       return res.send("NO SE ENCONTRO LA PARTIDA");
     }
 
-    res.render('match', { game });
+    res.render('match', { games, steam, video_length, steam_length, game_length });
   } catch (error) {
     console.log(error);
   }
@@ -222,10 +233,6 @@ gm.stats = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-}
-
-gm.adminBoard = async (req, res) => {
-  res.render('admin');
 }
 
 module.exports = gm;

@@ -7,6 +7,8 @@ const SteamUserSchema = new Schema({
   avatar: { type: String },
   profileurl: { type: String },
   elo: { type: String, default: "800" },
+  damage: { type: String, default: "0"},
+  kills: { type: String, default: "0"},
   //point: { type: String },
 });
 

@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const VIDEO = require('./controllers/VideoController');
-//const STEAM = require('./controllers/UserSteamController');
 const MAIN = require('./controllers/MainController');
 const GAME = require('./controllers/GameController');
+const ADMIN = require('./controllers/AdminController');
 
 module.exports = app => {
   app.get('/', (req, res) => {
@@ -24,7 +24,11 @@ module.exports = app => {
   router.get('/play.html/stats', GAME.stats);
 
   // ADMIN
-  router.get('/play.html/admin', GAME.adminBoard);
+  router.get('/play.html/admin', ADMIN.adminBoard);
+  router.get('/play.html/admin/steam', ADMIN.userClick);
+  router.post('/play.html/admin/steam/update', ADMIN.update);
+  router.get('/play.html/match', GAME.matchView);
+  router.get('/play.html/admin/teams', ADMIN.all_game);
 
   app.use(router);
 }

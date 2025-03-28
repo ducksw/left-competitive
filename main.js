@@ -10,13 +10,14 @@ const SteamStrategy = require("passport-steam").Strategy;
 const SteamUser = require("./models/UserSteamModels");
 
 const app = express();
-const port = 3000;
 
-// ### CONFIG HBS ###
+// @index + 1
 const hbs = require('hbs');
 hbs.registerHelper('increment', function(value) {
   return value + 1;
 });
+
+// ### CONFIG HBS ###
 
 hbs.registerPartials(__dirname + '/views/partials', function (err) {});
 app.use(express.static(__dirname + "/public"));
@@ -99,6 +100,6 @@ connectDB();
 routes(app);
 routesSteam(app);
 
-app.listen(port, () => {
-  console.log(`The app listening on port http://localhost:${port}/`);
+app.listen(process.env.PORT, () => {
+  console.log(`The app listening on port http://localhost:${process.env.PORT}/`);
 });
