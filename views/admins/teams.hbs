@@ -1,70 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/admin.css">
-  <title>LISTA DE PARTIDAS</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/team.css">
+	<title>LISTA DE EQUIPOS</title>
 </head>
 <body>
-<table class="table table-bordered table-striped custom-table">
-  <thead class="table-dark">
-    <tr>
-      <th>Código del Juego</th>
-      <th>Jugadores</th>
-      <th>Equipo A</th>
-      <th>Equipo B</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each game}}
-    <tr>
-      <td>{{this.code}}</td>
-      <td>
-        <ul>
-          {{#each this.players}}
-            <li>
-              <img src="{{this.avatar}}" width="30" height="30" class="rounded-circle" alt="Avatar">
-              {{this.displayName}} ({{this.steamId}})
-            </li>
-          {{else}}
-            <li>No hay jugadores</li>
-          {{/each}}
-        </ul>
-      </td>
-      <td>
-        <ul>
-          {{#each this.teamA}}
-            <li>
-              <img src="{{this.avatar}}" width="30" height="30" class="rounded-circle" alt="Avatar">
-              {{this.displayName}} ({{this.steamId}}) - Puntos: {{this.points}}
-            </li>
-          {{else}}
-            <li>No hay jugadores en Equipo A</li>
-          {{/each}}
-        </ul>
-      </td>
-      <td>
-        <ul>
-          {{#each this.teamB}}
-            <li>
-              <img src="{{this.avatar}}" width="30" height="30" class="rounded-circle" alt="Avatar">
-              {{this.displayName}} ({{this.steamId}}) - Puntos: {{this.points}}
-            </li>
-          {{else}}
-            <li>No hay jugadores en Equipo B</li>
-          {{/each}}
-        </ul>
-      </td>
-    </tr>
-    {{else}}
-      <tr><td colspan="4">No hay juegos registrados</td></tr>
-    {{/each}}
-  </tbody>
+<div class="main">
+	<div class="page">
+		<a href="/play.html" class="title"><img src="/image/title.png"></a>
+		<div class="box">
+			<div class="left-box">
+				<div class="nav">
+					<a href="/play.html">Home</a>
+					<a href="">Rules</a>
+					<a href="/play.html/stats">Stats</a>
+					<a href="game">Games</a>
+				</div>
+
+				<div class="table-game"> 
+					<table>
+						<tr>
+							<th>Código</th>
+							<th>Team A</th>
+							<th>Points A</th>
+							<th>Team B</th>
+							<th>Points B</th>
+							<th>Acciones</th>
+						</tr>
+						{{#each games}}
+							<tr>
+								<td>{{this.code}}</td>
+								<td>
+									{{#each this.teamA.players}}
+										{{this.displayName}}<br/>
+									{{/each}}
+								</td>
+								<td><b class="point">{{this.teamA.points}}</b></td>
+								<td>
+									{{#each this.teamB.players}}
+										{{this.displayName}}{{#unless @last}}, {{/unless}}
+									{{/each}}
+								</td>
+								<td><b class="point">{{this.teamB.points}}</b></td>
+								<td>
+									<a href="/play.html/admin/tm?id={{this.code}}" class="btn btn-primary">Editar</a>
+								</td>
+							</tr>
+						{{/each}}
+					</table>
+
+
+				</div>
+
+			</div>
+
+			<div class="right-box">
+				<div class="steam-user">
+					{{#if displayName}}
+						<a href="{{profileurl}}" target="_blank"><img class="icon2" src="{{avatar}}"></a>
+					{{else}}
+						<img class="icon" src="/image/icon.png">
+					{{/if}}
+					<div class="info-user-steam">
+						{{#if displayName}}
+							<b>{{displayName}}</b>
+						{{else}}
+							<b>Invitado</b>
+						{{/if}}
+						{{#if displayName}}
+							<span class="on">Sesión Iniciada</span>
+						{{else}}
+							<span class="off">No iniciado Sesión</span>
+						{{/if}}
+					</div>
+					<div class="btn-steam">
+						{{#if displayName}}
+							<a href="/logout" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+						{{else}}
+							<a href="/auth/steam" class="login-steam"><i class="fa-brands fa-steam"></i> Login with Steam</a>
+						{{/if}}
+					</div>
+				</div>
+				<hr>
+
+				<div class="stats-main">
+					<span class="title-main">ADMINS</span>
+					<hr/>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<!--
+<table class="table table-bordered table-striped">
+	<thead class="thead-dark">
+		<tr>
+			<th>Código</th>
+			<th>Jugadores</th>
+			<th>Equipo A</th>
+			<th>Puntos A</th>
+			<th>Equipo B</th>
+			<th>Puntos B</th>
+			<th>Acciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each games}}
+		<tr>
+			<td>{{this.code}}</td>
+			<td>
+				<ul>
+					{{#each this.players}}
+					<li>
+						<img src="{{this.avatar}}" alt="{{this.displayName}}" width="30"> 
+						{{this.displayName}}
+					</li>
+					{{/each}}
+				</ul>
+			</td>
+			<td>
+				<ul>
+					{{#each this.teamA.players}}
+					<li>
+						<img src="{{this.avatar}}" alt="{{this.displayName}}" width="30"> 
+						{{this.displayName}}
+					</li>
+					{{/each}}
+				</ul>
+			</td>
+			<td>{{this.teamA.points}}</td>
+			<td>
+				<ul>
+					{{#each this.teamB.players}}
+					<li>
+						<img src="{{this.avatar}}" alt="{{this.displayName}}" width="30"> 
+						{{this.displayName}}
+					</li>
+					{{/each}}
+				</ul>
+			</td>
+			<td>{{this.teamB.points}}</td>
+			<td>
+				<a href="/play.html/admin/tm?id={{this.code}}" class="btn btn-primary">Editar</a>
+			</td>
+		</tr>
+		{{/each}}
+	</tbody>
 </table>
+-->
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

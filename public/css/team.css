@@ -1,0 +1,52 @@
+.table-game {
+	display: flex;
+	flex-direction: column;
+	background-color: #1B1A1B;
+	border-radius: 5px;
+	border: 1px solid black;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+table {
+	font-size: 13px;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th {
+	padding: 10px;
+	border: 1px solid #111111;
+	background-color: red;
+}
+
+tr {
+	border: 1px solid black;
+}
+
+td {
+	border: 1px solid #111111;
+	text-align: left;
+	padding: 10px;
+}
+
+td span {
+	display: inline;
+}
+
+td a {
+	display: flex;
+	justify-content: center;
+	background-color: red;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+td a:hover {
+	background-color: brown;
+}
+
+.point {
+	color: gold;
+}

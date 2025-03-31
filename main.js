@@ -14,7 +14,7 @@ const app = express();
 // @index + 1
 const hbs = require('hbs');
 hbs.registerHelper('increment', function(value) {
-  return value + 1;
+	return value + 1;
 });
 
 // ### CONFIG HBS ###
@@ -29,65 +29,65 @@ app.use(express.urlencoded({ extended: true }));
 
 // ### STEAM ###
 app.use(
-  session({
-    secret: "secreto_super_seguro",
-    resave: false,
-    saveUninitialized: true,
-  })
+	session({
+		secret: "secreto_super_seguro",
+		resave: false,
+		saveUninitialized: true,
+	})
 );
 
 app.use((req, res, next) => {
-  res.locals.displayName = req.session.displayName;
-  res.locals.avatar = req.session.avatar;
-  res.locals.profileurl = req.session.profileurl;
-  next();
+	res.locals.displayName = req.session.displayName;
+	res.locals.avatar = req.session.avatar;
+	res.locals.profileurl = req.session.profileurl;
+	next();
 });
 
 // #### Configurar Passport con Steam ####
 
 passport.use(
-  new SteamStrategy(
-    {
-      returnURL: "http://localhost:3000/auth/steam/return",
-      realm: "http://localhost:3000/",
-      apiKey: process.env.API_STEAM,
-    },
-    async (identifier, profile, done) => {
-      try {
-        console.log("Profile recibido:", JSON.stringify(profile, null, 2));
+	new SteamStrategy(
+		{
+			returnURL: "http://localhost:3000/auth/steam/return",
+			realm: "http://localhost:3000/",
+			apiKey: process.env.API_STEAM,
+		},
+		async (identifier, profile, done) => {
+			try {
+				console.log("Profile recibido:", JSON.stringify(profile, null, 2));
 
-        let user = await SteamUser.findOne({ steamId: profile.id });
+				let user = await SteamUser.findOne({ steamId: profile.id });
 
-        if (!user) {
-          user = new SteamUser({
-            steamId: profile.id,
-            displayName: profile.displayName,
-            profileurl: profile._json.profileurl,
-            elo: profile.elo,
-            avatar: profile.photos[2].value,
-          });
+				if (!user) {
+					user = new SteamUser({
+						steamId: profile.id,
+						displayName: profile.displayName,
+						profileurl: profile._json.profileurl,
+						elo: profile.elo,
+						avatar: profile.photos[2].value,
+					});
 
-          await user.save();
-          console.log("Usuario guardado en la base de datos.");
-        } else {
-          console.log("Usuario ya registrado.");
-        }
+					await user.save();
+					console.log("Usuario guardado en la base de datos.");
+				} else {
+					console.log("Usuario ya registrado.");
+				}
 
-        return done(null, user);
-      } catch (error) {
-        console.error("Error al autenticar:", error);
-        return done(error);
-      }
-    }
-  )
+				return done(null, user);
+			} catch (error) {
+				console.error("Error al autenticar:", error);
+				return done(error);
+			}
+		}
+	)
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user);
+	done(null, user);
 });
 
 passport.deserializeUser((obj, done) => {
-  done(null, obj);
+	done(null, obj);
 });
 
 app.use(passport.initialize());
@@ -101,5 +101,5 @@ routes(app);
 routesSteam(app);
 
 app.listen(process.env.PORT, () => {
-  console.log(`The app listening on port http://localhost:${process.env.PORT}/`);
+	console.log(`The app listening on port http://localhost:${process.env.PORT}/`);
 });

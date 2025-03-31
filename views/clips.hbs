@@ -1,110 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- jQuery Modal -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <title>Welcome to Left Competitive</title>
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/clip.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- jQuery Modal -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="icon" href="/image/icon.png" type="image/gif" sizes="20x20">
+	<title>Welcome to Left Competitive</title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/clip.css">
 </head>
 <body>
 <div class="main">
-  <div class="page">
-    <a href="/play.html" class="title"><img src="/image/title.png"></a>
-    <div class="box">
-      <div class="left-box">
-        <div class="nav">
-          <a href="/play.html">Home</a>
-          <a href="">Rules</a>
-          <a href="/play.html/stats">Stats</a>
-          <a href="game">Games</a>
-        </div>
+	<div class="page">
+		<a href="/play.html" class="title"><img src="/image/title.png"></a>
+		<div class="box">
+			<div class="left-box">
+				<div class="nav">
+					<a href="/play.html">Home</a>
+					<a href="">Rules</a>
+					<a href="/play.html/stats">Stats</a>
+					<a href="game">Games</a>
+				</div>
 
-        <div class="box-videos"> 
-          <iframe src="{{videos.link_yt}}"></iframe>
-          <hr/>
-          <span class="desp">{{videos.title_link}}</span>
-        </div>
+				<div class="box-videos"> 
+					<iframe src="{{videos.link_yt}}"></iframe>
+					<hr/>
+					<span class="desp">{{videos.title_link}}</span>
+				</div>
 
-        <div class="box-clips"> 
-          <div class="title-clips">
-            <span>Otros clips</span>
-          </div>
-          <hr/>
-          <div class="box-image">
-            {{#if all_clip}}
-              {{#each all_clip}}
-                <div class="videos-box">
-                  <a href="/play.html/clip?id={{this._id}}"><img class="image-clip" src="https://img.youtube.com/vi/{{this.thumbnail_url}}/maxresdefault.jpg"></a>
-                  <span class="title-video">{{this.title_link}}</span>
-                </div>
-              {{/each}}
-              {{else}}
-              <span class="no-clip">No hay clips</span>
-            {{/if}}
-          </div>
-        </div>
-      </div>
+				<div class="box-clips"> 
+					<div class="title-clips">
+						<span>Otros clips</span>
+					</div>
+					<hr/>
+					<div class="box-image">
+						{{#if all_clip}}
+							{{#each all_clip}}
+								<div class="videos-box">
+									<a href="/play.html/clip?id={{this._id}}"><img class="image-clip" src="https://img.youtube.com/vi/{{this.thumbnail_url}}/maxresdefault.jpg"></a>
+									<span class="title-video">{{this.title_link}}</span>
+								</div>
+							{{/each}}
+							{{else}}
+							<span class="no-clip">No hay clips</span>
+						{{/if}}
+					</div>
+				</div>
+			</div>
 
-      <div class="right-box">
-        <div class="steam-user">
-          {{#if displayName}}
-            <a href="{{profileurl}}" target="_blank"><img class="icon2" src="{{avatar}}"></a>
-          {{else}}
-            <img class="icon" src="/image/icon.png">
-          {{/if}}
-          <div class="info-user-steam">
-            {{#if displayName}}
-              <b>{{displayName}}</b>
-            {{else}}
-              <b>Invitado</b>
-            {{/if}}
-            {{#if displayName}}
-              <span class="on">Sesión Iniciada</span>
-            {{else}}
-              <span class="off">No iniciado Sesión</span>
-            {{/if}}
-          </div>
-          <div class="btn-steam">
-            {{#if displayName}}
-              <a href="/logout" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
-            {{else}}
-              <a href="/auth/steam" class="login-steam"><i class="fa-brands fa-steam"></i> Login with Steam</a>
-            {{/if}}
-          </div>
-        </div>
-        <hr>
+			<div class="right-box">
+				<div class="steam-user">
+					{{#if displayName}}
+						<a href="{{profileurl}}" target="_blank"><img class="icon2" src="{{avatar}}"></a>
+					{{else}}
+						<img class="icon" src="/image/icon.png">
+					{{/if}}
+					<div class="info-user-steam">
+						{{#if displayName}}
+							<b>{{displayName}}</b>
+						{{else}}
+							<b>Invitado</b>
+						{{/if}}
+						{{#if displayName}}
+							<span class="on">Sesión Iniciada</span>
+						{{else}}
+							<span class="off">No iniciado Sesión</span>
+						{{/if}}
+					</div>
+					<div class="btn-steam">
+						{{#if displayName}}
+							<a href="/logout" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+						{{else}}
+							<a href="/auth/steam" class="login-steam"><i class="fa-brands fa-steam"></i> Login with Steam</a>
+						{{/if}}
+					</div>
+				</div>
+				<hr>
 
-        <div class="stats-main">
-          <span class="title-main">Compartir</span>
-          <hr/>
-          <div class="list-btn">
-            <a href="" target="_blank" id="facebook"><i style="color: #3b5998;" class="fa-brands fa-facebook"></i> Facebook</a>
-            <a href="" target="_blank" id="whatsapp"><i class="fa-brands fa-whatsapp" style="color: green;"></i> Whatsapp</a>
-            <a href="#" id="url"><i class="fa-solid fa-copy"></i> Copy URL</a>
-          </div>
-        </div>
-      </div>
-    </div>
+				<div class="stats-main">
+					<span class="title-main">Compartir</span>
+					<hr/>
+					<div class="list-btn">
+						<a href="" target="_blank" id="facebook"><i style="color: #3b5998;" class="fa-brands fa-facebook"></i> Facebook</a>
+						<a href="" target="_blank" id="whatsapp"><i class="fa-brands fa-whatsapp" style="color: green;"></i> Whatsapp</a>
+						<a href="#" id="url"><i class="fa-solid fa-copy"></i> Copy URL</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
-  </div>
+	</div>
 </div>
 
 <!-- Modal HTML embedded directly into document -->
 <div id="ex1" class="modal">
-  <form class="add_video" method="POST">
-    <span>Titúlo:</span>
-    <input type="text" name="title_link" required placeholder="Titúlo">
-    <span>Link:</span>
-    <input type="text" name="link_yt" required placeholder="https://www.youtube.com/watch?v=">
-    <div class="btn-modal">
-      <button type="submit">Subir clip</button>
-    </div>
-  </form>
+	<form class="add_video" method="POST">
+		<span>Titúlo:</span>
+		<input type="text" name="title_link" required placeholder="Titúlo">
+		<span>Link:</span>
+		<input type="text" name="link_yt" required placeholder="https://www.youtube.com/watch?v=">
+		<div class="btn-modal">
+			<button type="submit">Subir clip</button>
+		</div>
+	</form>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>

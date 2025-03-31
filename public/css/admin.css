@@ -1,108 +1,108 @@
 .main {
-  display: flex;
-  width: 100%;
+    display: flex;
+    width: 100%;
 }
 
 .bar-left {
-  display: flex;
-  flex-direction: column;
-  /* background-color: #DC3444; */
-  background-color: #111111;
-  max-width: 100%;
-  width: 250px;
-  height: 100vh;
-  border-right: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    /* background-color: #DC3444; */
+    background-color: #111111;
+    max-width: 100%;
+    width: 250px;
+    height: 100vh;
+    border-right: 2px solid black;
 }
 
 .list-players {
-  display: flex;
-  padding: 5px;
+    display: flex;
+    padding: 5px;
 }
 
 .list-players a {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  width: 100%;
-  font-weight: bold;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    font-weight: bold;
 }
 
 .list-players img {
-  max-width: 100%;
-  width: 30px;
-  border-radius: 5px;
+    max-width: 100%;
+    width: 30px;
+    border-radius: 5px;
 }
 
 .title {
-  color: white;
-  font-size: 25px;
-  font-weight: bold;
-  text-align: center;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .centre {
-  display: flex;
-  color: white;
-  max-width: 100%;
-  width: 900px;
-  border-right: 2px solid black;
-  /* background-color: red; */
+    display: flex;
+    color: white;
+    max-width: 100%;
+    width: 900px;
+    border-right: 2px solid black;
+    /* background-color: red; */
 }
 
 .right {
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
 }
 
 .btn-list {
-  display: flex;
-  margin-bottom: 10px;
+    display: flex;
+    margin-bottom: 10px;
 }
 
 .back {
-  display: flex;
-  justify-content: center;
-  color: red;
-  font-weight: bold;
-  background-color: #1E2129;
-  margin-top: 5px;
-  margin-left: 5px;
-  border-radius: 10px;
-  border: 1px solid black;
-  padding: 5px;
-  max-width: 100%;
-  width: 45px;
+    display: flex;
+    justify-content: center;
+    color: red;
+    font-weight: bold;
+    background-color: #1E2129;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 5px;
+    max-width: 100%;
+    width: 45px;
 }
 
 .profile img {
-  margin-left: 5px;
+    margin-left: 5px;
 }
 
 .back:hover {
-  background-color: #272A35;
+    background-color: #272A35;
 }
 
 .inputs {
-  display: flex;
-  margin-top: 20px;
-  margin-left: 10px;
+    display: flex;
+    margin-top: 20px;
+    margin-left: 10px;
 }
 
 .inputs span {
-  display: inline-block;
-  width: 200px;
-  font-weight: bold;
+    display: inline-block;
+    width: 200px;
+    font-weight: bold;
 }
 
 .boton {
-  margin-left: 10px;
-  margin-top: 10px;
-  margin-bottom: 50px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 50px;
 }
 
 .custom-table {
-  width: 90%;
-  max-width: 2000px;
-  margin: auto; /* Centrar la tabla */
+    width: 90%;
+    max-width: 2000px;
+    margin: auto; /* Centrar la tabla */
 }

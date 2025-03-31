@@ -1,201 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- jQuery Modal -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <title>Welcome to Left Competitive</title>
-  <link rel="stylesheet" href="/css/main.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- jQuery Modal -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<title>Welcome to Left Competitive</title>
+	<link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 <div class="main">
-  <div class="page">
-    <a href="/play.html" class="title"><img src="/image/title.png"></a>
-    <div class="box">
-      <div class="left-box">
-        <div class="nav">
-          <a href="/play.html" style="background-color: brown;">Home</a>
-          <a href="">Rules</a>
-          <a href="/play.html/stats">Stats</a>
-          <a href="/play.html/game">Games</a>
-        </div>
+	<div class="page">
+		<a href="/play.html" class="title"><img src="/image/title.png"></a>
+		<div class="box">
+			<div class="left-box">
+				<div class="nav">
+					<a href="/play.html" style="background-color: brown;">Home</a>
+					<a href="">Rules</a>
+					<a href="/play.html/stats">Stats</a>
+					<a href="/play.html/game">Games</a>
+				</div>
 
-        <div class="box-carr"> 
-          <div id="carr-image"><img src="https://images2.alphacoders.com/773/77360.jpg" class="img-carrjs"></div>
-        </div>
+				<div class="box-carr"> 
+					<div id="carr-image"><img src="https://images2.alphacoders.com/773/77360.jpg" class="img-carrjs"></div>
+				</div>
 
 
-        <!-- VERSUS -->
-        <div class="vs">
-          <div class="box-vs">
-            {{#if isCreator}}
-            <span class="title-party">Personal Panel</span>
-            {{else if game.players.length}}
-            <span class="title-party">In queue</span>
-            {{else}}
-            <span class="title-party">Crear Party</span>
-            {{/if}}
-            <hr/>
+				<!-- VERSUS -->
+				<div class="vs">
+					<div class="box-vs">
+						{{#if isCreator}}
+						<span class="title-party">Personal Panel</span>
+						{{else if game.players.length}}
+						<span class="title-party">In queue</span>
+						{{else}}
+						<span class="title-party">Crear Party</span>
+						{{/if}}
+						<hr/>
 
-            {{#if isCreator}}
-              <div class="creator">
-                <span class="code-main">Code: <span id="code" class="code">{{game.code}}</span> <span id="copy"><i class="fa-solid fa-copy"></i></span></span>
-                <div class="creator-btn">
-                  <a href="#" class="match" data-code="{{game.code}}" id="match">Emparejar</a>
-                  <a href="" class="delete">Eliminar</a>
-                </div>
-              </div>
-            {{/if}}
-            {{#if game.players.length}}
-                <div class="game-player">
-                  <span class="players-cont">Players: {{game.players.length}} / 8</span>
-                  <hr/>
-                  {{#each game.players}}
-                    <span class="name-players" data-steamid="{{this.steamId}}">
-                      <span class="data">
-                        <img src="{{this.avatar}}"> {{this.displayName}}
-                      </span>
-                      {{#if ../isCreator}}
-                        <span class="delete-icon"><i class="fa-solid fa-trash"></i></span>
-                      {{/if}}
-                    </span>
-                  {{/each}}
-                  <a href="/play.html" class="exit">Salir</a>
-                </div>
-            {{/if}}
-          </div>
-        </div>
-        
-        <div id="teamA">
-          {{#each game.teamA}}
-            <img src="{{avatar}}" alt="{{displayName}}" width="50">
-            {{displayName}}
-          {{/each}}
-        </div>
-        <div id="teamB">
-          {{#each game.teamB}}
-            <img src="{{avatar}}" alt="{{displayName}}" width="50">
-            {{displayName}}
-          {{/each}}
-        </div>
+						{{#if isCreator}}
+							<div class="creator">
+								<span class="code-main">Code: <span id="code" class="code">{{game.code}}</span> <span id="copy"><i class="fa-solid fa-copy"></i></span></span>
+								<div class="creator-btn">
+									<a href="#" class="match" data-code="{{game.code}}" id="match">Emparejar</a>
+									<a href="" class="delete">Eliminar</a>
+								</div>
+							</div>
+						{{/if}}
+						{{#if game.players.length}}
+								<div class="game-player">
+									<span class="players-cont">Players: {{game.players.length}} / 8</span>
+									<hr/>
+									{{#each game.players}}
+										<span class="name-players" data-steamid="{{this.steamId}}">
+											<span class="data">
+												<img src="{{this.avatar}}"> {{this.displayName}}
+											</span>
+											{{#if ../isCreator}}
+												<span class="delete-icon"><i class="fa-solid fa-trash"></i></span>
+											{{/if}}
+										</span>
+									{{/each}}
+									<a href="/play.html" class="exit">Salir</a>
+								</div>
+						{{/if}}
+					</div>
+				</div>
+				
+				<div id="teamA">
+					{{#each game.teamA}}
+						<img src="{{avatar}}" alt="{{displayName}}" width="50">
+						{{displayName}}
+					{{/each}}
+				</div>
+				<div id="teamB">
+					{{#each game.teamB}}
+						<img src="{{avatar}}" alt="{{displayName}}" width="50">
+						{{displayName}}
+					{{/each}}
+				</div>
 
-        <div class="box-clips"> 
-          <div class="title-clips">
-            <span>Clips lefsito</span>
-            <div class="btn-add">
-              <a href="#ex1" rel="modal:open">Add Clips</a>
-            </div>
-          </div>
-          <hr/>
-          <div class="box-image">
-            {{#if video_i}}
-              {{#each video_i}}
-                <div class="videos-box">
-                  <a href="/play.html/clip?id={{this._id}}"><img class="image-clip" src="https://img.youtube.com/vi/{{this.thumbnail_url}}/maxresdefault.jpg"></a>
-                  <span class="title-video">{{this.title_link}}</span>
-                </div>
-              {{/each}}
-              {{else}}
-              <span class="no-clip">No hay clips</span>
-            {{/if}}
-          </div>
-        </div>
+				<div class="box-clips"> 
+					<div class="title-clips">
+						<span>Clips lefsito</span>
+						<div class="btn-add">
+							<a href="#ex1" rel="modal:open">Add Clips</a>
+						</div>
+					</div>
+					<hr/>
+					<div class="box-image">
+						{{#if video_i}}
+							{{#each video_i}}
+								<div class="videos-box">
+									<a href="/play.html/clip?id={{this._id}}"><img class="image-clip" src="https://img.youtube.com/vi/{{this.thumbnail_url}}/maxresdefault.jpg"></a>
+									<span class="title-video">{{this.title_link}}</span>
+								</div>
+							{{/each}}
+							{{else}}
+							<span class="no-clip">No hay clips</span>
+						{{/if}}
+					</div>
+				</div>
 
-      </div>
+			</div>
 
-      <div class="right-box">
-        <div class="steam-user">
-          {{#if displayName}}
-            <a href="{{profileurl}}" target="_blank"><img class="icon2" src="{{avatar}}"></a>
-          {{else}}
-            <img class="icon" src="/image/icon.png">
-          {{/if}}
-          <div class="info-user-steam">
-            {{#if displayName}}
-              <b>{{displayName}}</b>
-            {{else}}
-              <b>Invitado</b>
-            {{/if}}
-            {{#if displayName}}
-              <span class="on">Sesión Iniciada</span>
-            {{else}}
-              <span class="off">No iniciado Sesión</span>
-            {{/if}}
-          </div>
-          <div class="btn-steam">
-            {{#if displayName}}
-              <a href="/logout" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
-            {{else}}
-              <a href="/auth/steam" class="login-steam"><i class="fa-brands fa-steam"></i> Login with Steam</a>
-            {{/if}}
-          </div>
-        </div>
-        <hr>
+			<div class="right-box">
+				<div class="steam-user">
+					{{#if displayName}}
+						<a href="{{profileurl}}" target="_blank"><img class="icon2" src="{{avatar}}"></a>
+					{{else}}
+						<img class="icon" src="/image/icon.png">
+					{{/if}}
+					<div class="info-user-steam">
+						{{#if displayName}}
+							<b>{{displayName}}</b>
+						{{else}}
+							<b>Invitado</b>
+						{{/if}}
+						{{#if displayName}}
+							<span class="on">Sesión Iniciada</span>
+						{{else}}
+							<span class="off">No iniciado Sesión</span>
+						{{/if}}
+					</div>
+					<div class="btn-steam">
+						{{#if displayName}}
+							<a href="/logout" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+						{{else}}
+							<a href="/auth/steam" class="login-steam"><i class="fa-brands fa-steam"></i> Login with Steam</a>
+						{{/if}}
+					</div>
+				</div>
+				<hr>
 
-        <div class="stats-main">
-          <span class="title-main">Stats (Global)</span>
-          <hr/>
-          <div class="box-stats">
-            <div class="stats-info">
-              <b>Players:</b>
-              <span>{{steam_length}}</span>
-            </div>
-            <div class="stats-info">
-              <b>Games:</b>
-              <span>{{game_length}}</span>
-            </div>
-            <div class="stats-info">
-              <b>Clips:</b>
-              <span>{{video_length}}</span>
-            </div>
-          </div>
-        </div>
+				<div class="stats-main">
+					<span class="title-main">Stats (Global)</span>
+					<hr/>
+					<div class="box-stats">
+						<div class="stats-info">
+							<b>Players:</b>
+							<span>{{steam_length}}</span>
+						</div>
+						<div class="stats-info">
+							<b>Games:</b>
+							<span>{{game_length}}</span>
+						</div>
+						<div class="stats-info">
+							<b>Clips:</b>
+							<span>{{video_length}}</span>
+						</div>
+					</div>
+				</div>
 
-        <div class="box-players">
-          <span class="title-main">Players <span class="st-length">({{steam_length}})</span></span>
-          <hr/>
-          <div class="all_user">
-            {{#each steam}}
-            <div class="user-steam">
-              <a href="{{this.profileurl}}" target="_blank"><img src="{{this.avatar}}"></a>
-              <span>{{this.displayName}}</span>
-              <div class="elo">
-                <span><span class="cor">[</span> <span class="elo-number">{{this.elo}}</span> <span class="cor">]</span></span>
-              </div>
-            </div>
-            {{/each}}
-          </div>
-        </div>
+				<div class="box-players">
+					<span class="title-main">Players <span class="st-length">({{steam_length}})</span></span>
+					<hr/>
+					<div class="all_user">
+						{{#each steam}}
+						<div class="user-steam">
+							<a href="{{this.profileurl}}" target="_blank"><img src="{{this.avatar}}"></a>
+							<span>{{this.displayName}}</span>
+							<div class="elo">
+								<span><span class="cor">[</span> <span class="elo-number">{{this.elo}}</span> <span class="cor">]</span></span>
+							</div>
+						</div>
+						{{/each}}
+					</div>
+				</div>
 
-      </div>
-    </div>
+			</div>
+		</div>
 
-  </div>
+	</div>
 </div>
 
 <!-- Modal HTML embedded directly into document -->
 <div id="ex1" class="modal">
-  <form class="add_video" method="POST">
-    <span>Titúlo:</span>
-    <input type="text" name="title_link" required placeholder="Titúlo">
-    <span>Link:</span>
-    <input type="text" name="link_yt" required placeholder="https://www.youtube.com/watch?v=">
-    <div class="btn-modal">
-      <button type="submit">Subir clip</button>
-    </div>
-  </form>
+	<form class="add_video" method="POST">
+		<span>Titúlo:</span>
+		<input type="text" name="title_link" required placeholder="Titúlo">
+		<span>Link:</span>
+		<input type="text" name="link_yt" required placeholder="https://www.youtube.com/watch?v=">
+		<div class="btn-modal">
+			<button type="submit">Subir clip</button>
+		</div>
+	</form>
 </div>
 
 <div id="ex2" class="modal">
-  <div class="create-game">
-      <h2>Crear Nueva Partida</h2>
-    <form action="/play.html/createGame" method="POST">
-      <button type="submit">Crear</button>
-    </form>
-  </div>
+	<div class="create-game">
+			<h2>Crear Nueva Partida</h2>
+		<form action="/play.html/createGame" method="POST">
+			<button type="submit">Crear</button>
+		</form>
+	</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
