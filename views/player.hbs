@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Stats | {{player.displayName}}</title>
+</head>
+<body>
+<div class="main">
+	<div class="page">
+		<a href="/play.html" class="title"><img src="/image/title.png"></a>
+		<div class="box">
+			<div class="left-box">
+				<div class="nav">
+					<a href="/play.html">Home</a>
+					<a href="">Rules</a>
+					<a href="/play.html/stats">Stats</a>
+					
+				</div>
+
+                <div class="box-profile">
+					<div>Stats of <b>{{player.displayName}}</b></div>
+					<hr/>
+					<div class="box-datos">
+						<div class="aea2">
+							<img src="{{player.avatar}}">
+							<div class="box-info">
+								<div class="info">
+									<span class="dat">Nickname: </span>
+									<span>{{player.displayName}}</span>
+								</div>
+								<div class="info">
+									<span class="dat">Real Name: </span>
+									<span>{{player.realname}}</span>
+								</div>
+								<div class="info">
+									<span class="dat">Account Created:</span>
+									<span>{{timeago player.timecreated}}</span>
+								</div>
+								<div class="info">
+									<span class="dat">Steam Id:</span>
+									<span>{{player.steamId}}</span>
+								</div>
+								<div class="info">
+									<span class="dat">Profile steam:</span>
+									<span><a href="{{player.profileurl}}" target="_blank">Profile steam</a></span>
+								</div>
+								<div class="info">
+									<span class="dat">Visibility:</span>
+									<span>{{player.personastate}}</span>
+								</div>
+							</div>
+						</div>
+						<table>
+							<tr class="color-dat">
+								<th>Elo</th>
+								<td>{{player.elo}} 🟡</td>
+							</tr>
+							<tr class="color-dat">
+								<th>Damage</th>
+								<td>{{player.damage}} 💥</td>
+							</tr>
+							<tr class="color-dat">
+								<th>Kills</th>
+								<td>{{player.kills}} 💀</td>
+							</tr>
+							<tr class="color-dat">
+								<th>Wins</th>
+								<td>{{player.win}} 🏆</td>
+							</tr>
+							<tr class="color-dat">
+								<th>Loser</th>
+								<td>{{player.loser}} 🤡</td>
+							</tr>
+						</table>
+					</div>
+                </div>
+
+			</div>
+
+			<div class="right-box">
+				<div class="steam-user">
+					{{#if displayName}}
+						<a href="{{profileurl}}" target="_blank"><img class="icon2" src="{{avatar}}"></a>
+					{{else}}
+						<img class="icon" src="/image/icon.png">
+					{{/if}}
+					<div class="info-user-steam">
+						{{#if displayName}}
+							<b>{{displayName}}</b>
+						{{else}}
+							<b>Invitado</b>
+						{{/if}}
+						{{#if displayName}}
+							<span class="on">Sesión Iniciada</span>
+						{{else}}
+							<span class="off">No iniciado Sesión</span>
+						{{/if}}
+					</div>
+					<div class="btn-steam">
+						{{#if displayName}}
+							<a href="/logout" class="logout"><i class="bi bi-box-arrow-right"></i></a>
+						{{else}}
+							<a href="/auth/steam" class="login-steam"><i class="fa-brands fa-steam"></i> Login with Steam</a>
+						{{/if}}
+					</div>
+				</div>
+				<hr>
+
+				<div class="stats-main">
+					<span class="title-main">Other Profiles</span>
+					<hr/>
+					<div class="list-user">
+						{{#each steam}}
+                        <div class="list-steam"><img src="{{this.avatar}}"><a href="/play.html/player?steam={{steamId}}">{{this.displayName}}</a></div>
+						{{/each}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+</body>
+</html>

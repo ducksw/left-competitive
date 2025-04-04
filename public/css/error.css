@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+  font-family: 'Inter';
+  background-color: black;
+  /* background-color: #111111; */
+  color: white;
+}
+
+.main {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.h1 {
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.anun {
+  font-weight: bold;
+  color: gold;
+}
+
+.main a {
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+}
+
+.main img {
+  max-width: 100%;
+}

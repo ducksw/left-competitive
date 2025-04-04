@@ -1,3 +1,7 @@
+body {
+	font-family: 'Inter';
+}
+
 .table-game {
 	display: flex;
 	flex-direction: column;
@@ -49,4 +53,193 @@ td a:hover {
 
 .point {
 	color: gold;
+}
+
+.game-match {
+    display: flex;
+	flex-direction: column;
+    background-color: #1B1A1B;
+    /* background-color: red; */
+    padding: 10px;
+	border-radius: 5px;
+	border: 1px solid black;
+	margin-top: 10px;
+}
+
+.title-code {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #111111;
+	padding: 10px;
+	margin: auto;
+	border-radius: 5px;
+}
+
+#code {
+	color: gold;
+	background-color: #1B1A1B;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.team-box  {
+	display: flex;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	background-color: #111111;
+	margin-top: 10px;
+	border-radius: 5px;
+	padding: 10px;
+	text-align: center;
+	width: 100%;
+}
+
+.points-input {
+	display: flex;
+	gap: 185px;
+	align-items: center;
+	margin: auto;
+}
+
+.points-input label {
+	color: grey;
+	font-weight: bold;
+}
+
+.points-input input {
+	background-color: #1B1A1B;
+	color: white;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+	outline: none;
+}
+
+.info {
+	display: flex;
+	gap: 10px;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	margin: auto;
+}
+
+.dat2 {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.dat2 img {
+	max-width: 100%;
+	width: 30px;
+}
+
+.team-box-a {
+	display: flex;
+	flex-direction: column;
+	background-color: #1B1A1B;
+	width: 200px;
+	padding: 5px;
+	border-radius: 10px;
+	border: 1px solid black;
+}
+
+.team-box-b {
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+	padding: 5px;
+	background-color: #1B1A1B;
+	border-radius: 10px;
+	border: 1px solid black;
+}
+
+.aea {
+	display: flex;
+	justify-content: center;
+	gap: 50px;
+	margin-bottom: 20px;
+}
+
+.team-box-a p {
+	color: orange;
+	font-weight: bold;
+}
+
+.team-box-b p {
+	color: orange;
+	font-weight: bold;
+}
+
+.volver {
+	background-color: red;
+	width: 100px;
+	text-align: center;
+	padding: 5px;
+	border-radius: 10px;
+	color: white;
+}
+
+.ver {
+	display: flex;
+	align-items: center;
+	font-weight: bold;
+}
+
+.btn {
+	background-color: darkred;
+	width: 120px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 10px;
+	color: white;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: brown;
+}
+
+.btns {
+	display: flex;
+	text-align: center;
+	gap: 10px;
+	margin-bottom: 10px;
+}
+
+.view-game {
+	background-color: darkred;
+	width: 120px;
+	padding: 5px;
+	border: 1px solid black;
+	border-radius: 10px;
+	color: black;
+	cursor: pointer;
+	background-color: #ffc107;
+}
+
+.others-botton {
+	display: flex;
+	gap: 10px;
+	flex-direction: column;
+}
+
+.others-botton a {
+	background-color: brown;
+	padding: 10px;
+	border-radius: 10px;
+	color: white;
+	width: 140px;
+	text-align: center;
+}
+
+#game {
+	font-weight: bold;
 }

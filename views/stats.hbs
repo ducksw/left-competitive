@@ -3,11 +3,130 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/stats.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+	<title>Stats</title>
 </head>
 <body>
-	{{#each steam}}
-	<div>{{increment @index}} {{this.displayName}} -> ELO: {{this.elo}} -> DAMAGE: {{this.damage}} -> KILLS: {{this.kills}}</div>
-	{{/each}}
+<div class="main">
+	<div class="page">
+		<a href="/play.html" class="title"><img src="/image/title.png"></a>
+		<div class="box">
+			<div class="left-box">
+				<div class="nav">
+					<a href="/play.html">Home</a>
+					<a href="">Rules</a>
+					<a href="/play.html/stats" id="stats">Stats</a>
+					
+				</div>
+					<div class="list-score" id="list-score">
+						<table id="table">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>
+									<th>Elo</th>
+									<th>Damage</th>
+									<th>Kills</th>
+									<th>Win</th>
+									<th>Loser</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each steam}}
+									<tr class="tr">
+										{{#lte @index 2}}
+											<td class="top-rank">
+												{{#eq @index 0}}
+												{{increment @index}} ⭐
+												{{else}}
+												{{increment @index}}
+												{{/eq}}
+											</td>
+											{{else}}
+												<td>{{increment @index}}</td>
+											{{/lte}}
+											<td class="td-name">
+												<div class="name-image">
+													<img src="{{this.avatar}}">
+													<a href="/play.html/player?steam={{this.steamId}}">{{this.displayName}}</a>
+												</div>
+											</td>
+												<td>{{this.elo}}</td>
+												<td>{{this.damage}}</td>
+												<td>{{this.kills}}</td>
+												<td>{{this.win}}</td>
+												<td>{{this.loser}}</td>
+											</tr>
+									{{/each}}
+							</tbody>
+						</table>
+					</div>
+			</div>
+
+			<div class="right-box">
+				<div class="steam-user">
+					{{#if displayName}}
+						<a href="{{profileurl}}" target="_blank"><img class="icon2" crossorigin="anonymous" src="{{avatar}}"></a>
+					{{else}}
+						<img class="icon" src="/image/icon.png">
+					{{/if}}
+					<div class="info-user-steam">
+						{{#if displayName}}
+							<b>{{displayName}}</b>
+						{{else}}
+							<b>Invitado</b>
+						{{/if}}
+						{{#if displayName}}
+							<span class="on">Sesión Iniciada</span>
+						{{else}}
+							<span class="off">No iniciado Sesión</span>
+						{{/if}}
+					</div>
+					<div class="btn-steam">
+						{{#if displayName}}
+							<a href="/logout" class="logout"><i class="bi bi-box-arrow-right"></i></a>
+						{{else}}
+							<a href="/auth/steam" class="login-steam"><i class="fa-brands fa-steam"></i> Login with Steam</a>
+						{{/if}}
+					</div>
+				</div>
+				<hr>
+
+				<div class="stats-main">
+					<span class="title-main">Opciones</span>
+					<hr/>
+					
+					<div class="btn-stat">
+						{{#if displayName}}
+							<a href="/play.html/player?steam={{searchId.steamId}}">My Stats</a>
+						{{/if}}
+						<button onclick="capture()">Descargar Stats</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+
+<script>
+function capture() {
+	let div = document.getElementById('list-score');
+
+  html2canvas(div, { useCORS: true }).then(canvas => {
+    let imgURL = canvas.toDataURL("image/png");
+    let link = document.createElement("a");
+    link.href = imgURL;
+    link.download = `stats.png`;
+    link.click();
+  });
+}
+
+</script>
 </body>
 </html>

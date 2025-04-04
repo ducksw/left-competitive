@@ -21,7 +21,7 @@
 					<a href="/play.html">Home</a>
 					<a href="">Rules</a>
 					<a href="/play.html/stats">Stats</a>
-					<a href="game">Games</a>
+					
 				</div>
 
 				{{#if games}}
@@ -34,7 +34,7 @@
 									{{#each games.teamA.players}}
 										<div class="player">
 											<span class="player-name">{{this.displayName}}</span>
-											<span class="player-points">{{this.points}}</span>
+											{{!-- <span class="player-points">{{this.points}}</span> --}}
 										</div>
 									{{/each}}
 								</div>
@@ -95,6 +95,9 @@
 				<hr>
 
 				<div class="stats-main">
+					<span class="title-main">Compartir</span>
+					<hr/>
+
 					<span class="title-main">Stats (Global)</span>
 					<hr/>
 					<div class="box-stats">
@@ -114,15 +117,15 @@
 				</div>
 
 				<div class="box-players">
-					<span class="title-main">Players <span class="st-length">({{steam_length}})</span></span>
+					<span class="title-main">Players <span class="st-length">({{game_match_length}})</span></span>
 					<hr/>
 					<div class="all_user">
-						{{#each steam}}
+						{{#each playersWithElo}}
 						<div class="user-steam">
 							<a href="{{this.profileurl}}" target="_blank"><img src="{{this.avatar}}"></a>
-							<span>{{this.displayName}}</span>
+							<span>{{displayName}}</span>
 							<div class="elo">
-								<span><span class="cor">[</span> <span class="elo-number">{{this.elo}}</span> <span class="cor">]</span></span>
+								<span><span class="cor">[</span> <span class="elo-number">{{elo}}</span> <span class="cor">]</span></span>
 							</div>
 						</div>
 						{{/each}}

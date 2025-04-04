@@ -1,0 +1,98 @@
+.list-score {
+  display: flex;
+  background-color: #1B1A1B;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	/* background-color: white; */
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: #111111;
+}
+
+th {
+  background-color: brown;
+}
+
+.name-tabla {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  max-width: 100%;
+  width: 330px;
+}
+
+.image-tabla {
+  max-width: 100%;
+  width: 25px;
+}
+
+.tr td {
+  border: 1px solid #111111;
+}
+
+.top-rank {
+  color: rgb(245, 203, 37);
+  font-weight: bold;
+}
+
+.name-image {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.name-image img {
+  max-width: 100%;
+  width: 35px;
+}
+
+.name-image a {
+  color: white;
+}
+
+.name-image a:hover {
+  text-decoration: underline;
+}
+
+.td-name {
+  width: 30%;
+}
+
+#stats {
+  background-color: brown;
+}
+
+.btn-stat {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  max-width: 100%;
+  width: 200px;
+}
+
+.btn-stat button {
+  background-color: #111111;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  font-family: 'Inter';
+  font-size: 15px;
+}
+
+.btn-stat a {
+  background-color: #111111;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  text-align: center;
+  color: white;
+}

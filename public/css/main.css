@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 body {
-    background-color: black;
-    /* background-color: #111111; */
-    /* background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/293260/8c18b754491ec5590da808775069257282efd48f.jpg); */
-    background-position: center;
+	background-color: black;
+	/* background-color: #111111; */
+	/* background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/293260/8c18b754491ec5590da808775069257282efd48f.jpg); */
+	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -12,7 +12,9 @@ body {
 }
 
 a {
-    text-decoration: none;
+	text-decoration: none;
+	/* color: #0078d4; */
+	color: white;
 }
 
 .main {
@@ -21,15 +23,15 @@ a {
 
 .page {
 	display: flex;
-		flex-direction: column;
+	flex-direction: column;
 	max-width: 100%;
 	width: 1100px;
-		margin: auto;
+	margin: auto;
 }
 
 .title img {
-		max-width: 100%;
-		width: 300px;
+	max-width: 100%;
+	width: 300px;
 }
 
 .box {
@@ -40,7 +42,7 @@ a {
 
 .nav {
 	display: flex;
-	gap: 30px;
+	gap: 5px;
 	background-color: #1B1A1B;
 	border-radius: 5px;
 	padding: 10px;
@@ -48,7 +50,16 @@ a {
 }
 
 .nav a {
+	max-width: 100%;
+	width: 70px;
+	border-radius: 5px;
 	color: white;
+	padding: 5px;
+	text-align: center;
+}
+
+.nav a:hover {
+	background-color: rgba(165, 42, 42, 0.328);
 }
 
 .left-box {
@@ -171,7 +182,7 @@ hr {
 }
 
 .icon2 {
-	max-width: 100%;
+	/* max-width: 100%; */
 	width: 60px;
 	border-radius: 5px;
 	border: 1px solid lightgreen;
@@ -612,4 +623,113 @@ hr {
 .delete-icon:hover {
 	color:  #FC0732;
 	box-shadow: 0px 0px 10px #6E0102;
+}
+
+.box-profile {
+	display: flex;
+	flex-direction: column;
+	background-color: #1B1A1B;
+	margin-top: 10px;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid black;
+}
+
+.box-datos {
+	display: flex;
+	flex-direction: column;
+	background-color: #111111;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.box-info {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.info span {
+	display: inline-block;
+	width: 200px;
+}
+
+.info a {
+	color: brown;
+	text-decoration: underline;
+}
+
+.info a:hover {
+	color: darkred;
+}
+
+.dat {
+	font-weight: bold;
+	color: grey;
+}
+
+.aea2 {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	border: 1px solid #1B1A1B;
+}
+
+.aea img {
+	border-left: 1px solid #1B1A1B;
+	border-right: 1px solid #1B1A1B;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	/* background-color: white; */
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+	border: 1px solid #1B1A1B;
+	padding: 10px;
+	text-align: left;
+	border-top: none;
+}
+
+th {
+	/* background-color: #333; */
+	color: white;
+	width: 250px;
+}
+
+.color-dat {
+	color: darkgrey;
+}
+
+/* a:hover {
+	text-decoration: underline;
+} */
+
+.list-user {
+	display: flex;
+	flex-direction: column;
+	background-color: #111111;
+	border-radius: 5px;
+}
+
+.list-steam {
+	display: flex;
+	gap: 10px;
+	padding: 5px;
+}
+
+.list-steam img {
+	width: 35px;
+}
+
+.list-steam a {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 5px;
+	background-color: #1B1A1B;
+	border-radius: 10px;
 }

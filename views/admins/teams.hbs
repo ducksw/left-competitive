@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/team.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<title>LISTA DE EQUIPOS</title>
 </head>
 <body>
@@ -17,7 +18,7 @@
 					<a href="/play.html">Home</a>
 					<a href="">Rules</a>
 					<a href="/play.html/stats">Stats</a>
-					<a href="game">Games</a>
+					
 				</div>
 
 				<div class="table-game"> 
@@ -32,7 +33,7 @@
 						</tr>
 						{{#each games}}
 							<tr>
-								<td>{{this.code}}</td>
+								<td><b>{{this.code}}</b></td>
 								<td>
 									{{#each this.teamA.players}}
 										{{this.displayName}}<br/>
@@ -41,7 +42,7 @@
 								<td><b class="point">{{this.teamA.points}}</b></td>
 								<td>
 									{{#each this.teamB.players}}
-										{{this.displayName}}{{#unless @last}}, {{/unless}}
+										{{this.displayName}}
 									{{/each}}
 								</td>
 								<td><b class="point">{{this.teamB.points}}</b></td>
@@ -51,8 +52,6 @@
 							</tr>
 						{{/each}}
 					</table>
-
-
 				</div>
 
 			</div>
@@ -78,7 +77,7 @@
 					</div>
 					<div class="btn-steam">
 						{{#if displayName}}
-							<a href="/logout" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+							<a href="/logout" class="logout"><i class="bi bi-box-arrow-right"></i></a>
 						{{else}}
 							<a href="/auth/steam" class="login-steam"><i class="fa-brands fa-steam"></i> Login with Steam</a>
 						{{/if}}
@@ -87,7 +86,15 @@
 				<hr>
 
 				<div class="stats-main">
-					<span class="title-main">ADMINS</span>
+					<span class="title-main">Others</span>
+					<hr/>
+
+					<div class="others-botton">
+						<a href="/play.html/admin">Editar Jugadores</a>
+						<a href="/play.html/admin/teams" id="game">Editar Partidas</a>
+					</div>
+
+					<span class="title-main">Admins</span>
 					<hr/>
 				</div>
 			</div>
@@ -95,64 +102,6 @@
 
 	</div>
 </div>
-
-<!--
-<table class="table table-bordered table-striped">
-	<thead class="thead-dark">
-		<tr>
-			<th>Código</th>
-			<th>Jugadores</th>
-			<th>Equipo A</th>
-			<th>Puntos A</th>
-			<th>Equipo B</th>
-			<th>Puntos B</th>
-			<th>Acciones</th>
-		</tr>
-	</thead>
-	<tbody>
-		{{#each games}}
-		<tr>
-			<td>{{this.code}}</td>
-			<td>
-				<ul>
-					{{#each this.players}}
-					<li>
-						<img src="{{this.avatar}}" alt="{{this.displayName}}" width="30"> 
-						{{this.displayName}}
-					</li>
-					{{/each}}
-				</ul>
-			</td>
-			<td>
-				<ul>
-					{{#each this.teamA.players}}
-					<li>
-						<img src="{{this.avatar}}" alt="{{this.displayName}}" width="30"> 
-						{{this.displayName}}
-					</li>
-					{{/each}}
-				</ul>
-			</td>
-			<td>{{this.teamA.points}}</td>
-			<td>
-				<ul>
-					{{#each this.teamB.players}}
-					<li>
-						<img src="{{this.avatar}}" alt="{{this.displayName}}" width="30"> 
-						{{this.displayName}}
-					</li>
-					{{/each}}
-				</ul>
-			</td>
-			<td>{{this.teamB.points}}</td>
-			<td>
-				<a href="/play.html/admin/tm?id={{this.code}}" class="btn btn-primary">Editar</a>
-			</td>
-		</tr>
-		{{/each}}
-	</tbody>
-</table>
--->
 
 </body>
 </html>

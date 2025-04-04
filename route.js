@@ -1,12 +1,13 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-const VIDEO = require('./controllers/VideoController');
-const MAIN = require('./controllers/MainController');
-const GAME = require('./controllers/GameController');
-const ADMIN = require('./controllers/AdminController');
+import VIDEO from './controllers/VideoController.js';
+import MAIN from './controllers/MainController.js';
+import GAME from './controllers/GameController.js';
+import ADMIN from './controllers/AdminController.js';
+import PLAYER from './controllers/PlayerController.js';
 
-module.exports = app => {
+export default (app) => {
 	app.get('/', (req, res) => {
 		res.render('index');
 	});
@@ -22,6 +23,7 @@ module.exports = app => {
 	router.post('/match', GAME.match);
 	router.get('/play.html/match', GAME.matchView);
 	router.get('/play.html/stats', GAME.stats);
+	router.get('/play.html/player', PLAYER.viewProfile);
 
 	// ADMIN
 	router.get('/play.html/admin', ADMIN.adminBoard);
@@ -32,7 +34,6 @@ module.exports = app => {
 
 	router.get('/play.html/admin/tm', ADMIN.gameViews);
 	router.post('/play.html/admin/updateGame', ADMIN.updateGame);
-
 
 	app.use(router);
 }

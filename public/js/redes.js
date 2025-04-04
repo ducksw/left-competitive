@@ -5,7 +5,7 @@ document.getElementById('facebook').href = facebookShareUrl;
 
 // WHATSAPP
 let current_ws = window.location.href;
-let text = '¡Mira esto! ' + current_ws;
+let text = '¡Mira este clipsito! ' + current_ws;
 let whatsappShareUrl = 'https://wa.me/?text=' + encodeURIComponent(text);
 document.getElementById('whatsapp').href = whatsappShareUrl;
 

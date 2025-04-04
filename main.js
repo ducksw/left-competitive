@@ -1,27 +1,47 @@
-const express = require('express');
-const connectDB = require('./database');
-const routes = require('./route');
-const routesSteam = require('./routeSteam');
+import { fileURLToPath } from 'url';
+import path from 'path';
+import SteamUser from './models/UserSteamModels.js';
+import express from 'express';
+import connectDB from './database.js';
+import routes from './route.js';
+import routesSteam from './routeSteam.js';
+import session from 'express-session';
+import passport from 'passport';
+import SteamStrategy from 'passport-steam';
+import moment from 'moment';
+import hbs from 'hbs';
 
-const session = require("express-session");
-const passport = require("passport");
-const SteamStrategy = require("passport-steam").Strategy;
 
-const SteamUser = require("./models/UserSteamModels");
+//const SteamStrategy = require("passport-steam").Strategy;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
 // @index + 1
-const hbs = require('hbs');
 hbs.registerHelper('increment', function(value) {
 	return value + 1;
 });
 
-// ### CONFIG HBS ###
+hbs.registerHelper('timeago', function(timecreated) {
+    return moment(timecreated).format('DD/MM/YYYY');
+});
 
-hbs.registerPartials(__dirname + '/views/partials', function (err) {});
-app.use(express.static(__dirname + "/public"));
-app.set("views", __dirname + "/views");
+
+// lte -> detecta los 3 primero de la tabla
+hbs.registerHelper('lte', function (a, b, options) {
+    return a <= b ? options.fn(this) : options.inverse(this);
+});
+
+hbs.registerHelper('eq', function(a, b, options) {
+  return a === b ? options.fn(this) : options.inverse(this);
+});
+
+
+// ### CONFIG HBS ###
+hbs.registerPartials(path.join(__dirname, '/views/partials'), function () {});
+app.use(express.static(path.join(__dirname, '/public')));
+app.set("views", path.join(__dirname, '/views'));
 app.set('view engine', 'hbs');
 
 app.use(express.json());
@@ -42,6 +62,7 @@ app.use((req, res, next) => {
 	res.locals.profileurl = req.session.profileurl;
 	next();
 });
+
 
 // #### Configurar Passport con Steam ####
 
@@ -65,6 +86,9 @@ passport.use(
 						profileurl: profile._json.profileurl,
 						elo: profile.elo,
 						avatar: profile.photos[2].value,
+						timecreated: new Date(profile._json.timecreated * 1000),
+						personastate: profile._json.personastate,
+						realname: profile._json.realname,
 					});
 
 					await user.save();

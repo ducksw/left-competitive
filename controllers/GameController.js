@@ -1,9 +1,9 @@
-const gm = {};
-const Game = require('../models/GameModels');
-const Video = require('../models/VideoModel');
-const Steam = require('../models/UserSteamModels');
+import Game from '../models/GameModels.js';
+import Video from '../models/VideoModel.js';
+import Steam from '../models/UserSteamModels.js'
+import help from '../helpers/random.js';
 
-const { randomNumber } = require('../helpers/random');
+const gm = {};
 
 gm.indexGame = async (req, res) => {
 	try {
@@ -19,6 +19,7 @@ gm.indexGame = async (req, res) => {
 		const { code } = req.query;
 
 		let game = null;
+		let isCreator = false;
 
 		if (code) {
 			game = await Game.findOne({ code });
@@ -37,10 +38,11 @@ gm.indexGame = async (req, res) => {
 gm.createGame = async (req, res) => {
 	try {
 		if (!req.session.steamId) {
-			return res.status(401).send("Debes iniciar sesión con Steam para crear una partida.");
+			return res.render('errors/sign_in');
+			//return res.status(401).send("Debes iniciar sesión con Steam para crear una partida.");
 		}
 
-		const code = randomNumber();
+		const code = help.randomString();
 		const userSteamId = req.session.steamId;
 		const displayName = req.session.displayName;
 		const avatar = req.session.avatar;
@@ -66,6 +68,7 @@ gm.createGame = async (req, res) => {
 
 gm.joinGame = async (req, res) => {
 	try {
+
 		if (!req.isAuthenticated()) {
 			return res.redirect('/auth/steam');
 		}
@@ -106,37 +109,37 @@ gm.joinGame = async (req, res) => {
 
 gm.deletePlayer = async (req, res) => {
 	try {
-	const { code, playerSteamId } = req.body;
+		const { code, playerSteamId } = req.body;
 
-	if (!code || !playerSteamId) {
-		return res.status(400).json({ message: "Faltan datos: código de partida o SteamID." });
-	}
+		if (!code || !playerSteamId) {
+			return res.status(400).json({ message: "Faltan datos: código de partida o SteamID." });
+		}
 
-	const game = await Game.findOne({ code });
+		const game = await Game.findOne({ code });
 
-	if (!game) {
-		return res.status(404).json({ message: "Partida no encontrada." });
-	}
+		if (!game) {
+			return res.status(404).json({ message: "Partida no encontrada." });
+		}
 
-	const creatorSteamId = game.players[0].steamId;
+		const creatorSteamId = game.players[0].steamId;
 
-	if (req.session.steamId !== creatorSteamId) {
-		return res.status(403).json({ message: "No tienes permisos para eliminar jugadores." });
-	}
+		if (req.session.steamId !== creatorSteamId) {
+			return res.status(403).json({ message: "No tienes permisos para eliminar jugadores." });
+		}
 
-	const initLength = game.players.length;
-	game.players = game.players.filter(player => player.steamId !== playerSteamId);
+		const initLength = game.players.length;
+		game.players = game.players.filter(player => player.steamId !== playerSteamId);
 
-	if (game.players.length === initLength) {
-		return res.status(404).json({ message: "El jugador no está en la partida." });
-	}
+		if (game.players.length === initLength) {
+			return res.status(404).json({ message: "El jugador no está en la partida." });
+		}
 
-	await game.save();
+		await game.save();
 
-	return res.status(200).json({ success: true, message: "Jugador eliminado con éxito." });
+		return res.status(200).json({ success: true, message: "Jugador eliminado con éxito." });
 
 	} catch (error) {
-	console.error(error);
+		console.error(error);
 	}
 }
 
@@ -200,7 +203,7 @@ gm.matchView = async (req, res) => {
 	try {
 		const { code } = req.query;
 
-		// length
+		// Lista
 		const video_i = await Video.find();
 		const steam = await Steam.find();
 		const game_i = await Game.find();
@@ -208,34 +211,73 @@ gm.matchView = async (req, res) => {
 		const games = await Game.findOne({ code });
 
 		if (!games) {
-			return res.send("NO SE ENCONTRO LA PARTIDA");
+			return res.send("NO SE ENCONTRÓ LA PARTIDA");
 		}
 
+		const steamIds = [
+			...(games.players?.map(player => player.steamId) || []),
+			...(games.teamA?.players?.map(player => player.steamId) || []),
+			...(games.teamB?.players?.map(player => player.steamId) || [])
+		];
+
+		const playersWithElo = await Steam.find({ steamId: { $in: steamIds } });
+
+        // logica para ver quien tiene mas elo
+		playersWithElo.sort((a, b) => (b.elo || 800) - (a.elo || 800));
+
+		const game_match_length = games.players.length;
+
+		// length of each model
 		const video_length = video_i.length;
 		const steam_length = steam.length;
 		const game_length = game_i.length;
 
+		// DEPURAR
 		console.log("MATCH GAME", games);
+		console.log("ELO", playersWithElo);
+		console.log("ALL TEAM USER", game_match_length);
+		console.log("TEAM A", games.teamA.players);
+		console.log("TEAM B", games.teamB.players);
 
-		res.render('match', { games, steam, video_length, steam_length, game_length });
+		res.render('match', { 
+			games, 
+			steam, 
+			video_length, 
+			steam_length, 
+			game_length, 
+			game_match_length, 
+			playersWithElo 
+		});
 	} catch (error) {
-		console.log(error);
+		console.error("Error en matchView:", error);
+		res.status(500).send("Error en el servidor");
 	}
 }
 
 gm.stats = async (req, res) => {
 	try {
+		const steamId = req.session.steamId;
+
 		const steam = await Steam.find();
+
+		// buscar id cuando inicia session
+		const searchId = steamId ? await Steam.findOne({ steamId }) : null;
+
+		if (!searchId) {
+			console.log("ID NO ENCONTRADO");
+		} else {
+			console.log("ID ENCONTRADO:", searchId.steamId);
+		}
 
 		// logica para ver quien tiene mas elo
 		steam.sort((a, b) => (b.elo || 800) - (a.elo || 800));
 
 		console.log(steam);
 
-		res.render('stats', { steam });
+		res.render('stats', { steam, searchId });
 	} catch (error) {
 		console.log(error);
 	}
 }
 
-module.exports = gm;
+export default gm;

@@ -3,56 +3,113 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/team.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<title>LISTA DE EQUIPOS</title>
 </head>
 <body>
-	
+<div class="main">
+	<div class="page">
+		<a href="/play.html" class="title"><img src="/image/title.png"></a>
+		<div class="box">
+			<div class="left-box">
+				<div class="nav">
+					<a href="/play.html">Home</a>
+					<a href="">Rules</a>
+					<a href="/play.html/stats">Stats</a>
+					
+				</div>
+
+				<div class="game-match"> 
+					<div class="btns">
+						<a href="/play.html/admin/teams" class="volver">Volver</a>
+						<a href="/play.html/match?code={{game.code}}" target="_blank" class="view-game">Ver Juego</a>
+					</div>
+					<span class="title-code">Editando Juego: <span id="code">{{game.code}}</span></span>
+					<div class="team-box">
+						<form action="/play.html/admin/updateGame?id={{game.code}}" method="POST">
+							<div class="aea">
+								<div class="team-box-a">
+									<h2 style="color: blue">Equipo A</h2>
+									<p>Puntos: {{game.teamA.points}}</p>
+									<div class="info">
+										{{#each game.teamA.players}}
+											<div class="dat2">
+												<img src="{{this.avatar}}" alt="Avatar" width="50" />
+												{{this.displayName}}
+											</div>
+										{{/each}}
+									</div>
+								</div>
+								<div class="ver">
+									<span>VERSUS</span>
+								</div>
+								<div class="team-box-b">
+									<h2 style="color: red;">Equipo B</h2>
+									<p>Puntos: {{game.teamB.points}}</p>
+									<div class="info">
+										{{#each game.teamB.players}}
+											<div class="dat2">
+												<img src="{{this.avatar}}" alt="Avatar" width="50" />
+												{{this.displayName}}
+											</div>
+										{{/each}}
+									</div>
+								</div>
+							</div>
+							<div class="points-input">
+								{{!-- <label for="pointsA">Points A:</label> --}}
+								<input type="text" id="pointsA" name="teamA.points" value="{{game.teamA.points}}" required />
+								{{!-- <label for="pointsB">Points B:</label> --}}
+								<input type="text" id="pointsB" name="teamB.points" value="{{game.teamB.points}}" required />
+							</div>
+							<br/>
+							<button class="btn" type="submit">Actualizar</button>
+						</form>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="right-box">
+				<div class="steam-user">
+					{{#if displayName}}
+						<a href="{{profileurl}}" target="_blank"><img class="icon2" src="{{avatar}}"></a>
+					{{else}}
+						<img class="icon" src="/image/icon.png">
+					{{/if}}
+					<div class="info-user-steam">
+						{{#if displayName}}
+							<b>{{displayName}}</b>
+						{{else}}
+							<b>Invitado</b>
+						{{/if}}
+						{{#if displayName}}
+							<span class="on">Sesión Iniciada</span>
+						{{else}}
+							<span class="off">No iniciado Sesión</span>
+						{{/if}}
+					</div>
+					<div class="btn-steam">
+						{{#if displayName}}
+							<a href="/logout" class="logout"><i class="bi bi-box-arrow-right"></i></a>
+						{{else}}
+							<a href="/auth/steam" class="login-steam"><i class="fa-brands fa-steam"></i> Login with Steam</a>
+						{{/if}}
+					</div>
+				</div>
+				<hr>
+
+				<div class="stats-main">
+					<span class="title-main">ADMINS</span>
+					<hr/>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
 </body>
 </html>
-
-<!--
-<h1>Editar Juego: {{game.code}}</h1>
-
-<h2>Jugadores</h2>
-<ul>
-	{{#each game.players}}
-		<li>
-			<img src="{{this.avatar}}" alt="Avatar" width="50" />
-			{{this.displayName}} ({{this.steamId}})
-		</li>
-	{{/each}}
-</ul>
-
-<h2>Equipo A</h2>
-<p>Puntos: {{game.teamA.points}}</p>
-<ul>
-	{{#each game.teamA.players}}
-		<li>
-			<img src="{{this.avatar}}" alt="Avatar" width="50" />
-			{{this.displayName}} ({{this.steamId}})
-		</li>
-	{{/each}}
-</ul>
-
-<h2>Equipo B</h2>
-<p>Puntos: {{game.teamB.points}}</p>
-<ul>
-	{{#each game.teamB.players}}
-		<li>
-			<img src="{{this.avatar}}" alt="Avatar" width="50" />
-			{{this.displayName}} ({{this.steamId}})
-		</li>
-	{{/each}}
-</ul>
-
-<h2>Actualizar Puntos</h2>
-<form action="/play.html/admin/updateGame?id={{game.code}}" method="POST">
-	<label for="pointsA">Puntos Equipo A:</label>
-	<input type="text" id="pointsA" name="teamA.points" value="{{game.teamA.points}}" required />
-
-	<label for="pointsB">Puntos Equipo B:</label>
-	<input type="text" id="pointsB" name="teamB.points" value="{{game.teamB.points}}" required />
-
-	<button type="submit">Actualizar</button>
-</form>
--->

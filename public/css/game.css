@@ -1,138 +1,138 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 body {
-    font-family: 'Inter';
-    /* background-color: #111111; */
-    background-color: black;
-    color: white;
+  font-family: 'Inter';
+  /* background-color: #111111; */
+  background-color: black;
+  color: white;
 }
 
 .page {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    width: 1000px;
-    margin: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 1000px;
+  margin: auto;
 }
 
 a { text-decoration: none; }
 
 .nav {
-    display: flex;
-    gap: 30px;
-    background-color: #1B1A1B;
-    border-radius: 5px;
-    padding: 10px;
-    border: 1px solid black;
+  display: flex;
+  gap: 30px;
+  background-color: #1B1A1B;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid black;
 }
 
 .nav a {
-    color: white;
+  color: white;
 }
 
 .title {
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .game {
-    display: flex;
-    flex-direction: column;
-    background-color: #1B1A1B;
-    margin-top: 10px;
-    border-radius: 5px;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #1B1A1B;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 #teamA {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    width: 380px;
-    background-color: #111111;
-    border-radius: 0px 0px 5px 5px;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    -moz-border-radius: 0px 0px 5px 5px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 380px;
+  background-color: #111111;
+  border-radius: 0px 0px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 0px 0px 5px 5px;
 }
 
 #teamB {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    width: 380px;
-    background-color: #111111;
-    border-radius: 0px 0px 5px 5px;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    -moz-border-radius: 0px 0px 5px 5px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 380px;
+  background-color: #111111;
+  border-radius: 0px 0px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 0px 0px 5px 5px;
 }
 
 .teama {
-    background-color: blue;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 5px 5px 0px 0px;
-    text-align: center;
-    -webkit-border-radius: 5px 5px 0px 0px;
-    -moz-border-radius: 5px 5px 0px 0px;
+  background-color: blue;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px 5px 0px 0px;
+  text-align: center;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 5px 5px 0px 0px;
 }
 
 .teamb {
-    background-color: red;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px 5px 0px 0px;
-    -webkit-border-radius: 5px 5px 0px 0px;
-    -moz-border-radius: 5px 5px 0px 0px;
+  background-color: red;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 5px 5px 0px 0px;
 }
 
 .box-game {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    gap: 30px;
-    margin: auto;
-    background-color: #222222;
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 30px;
+  margin: auto;
+  background-color: #222222;
+  border-radius: 10px;
 }
 
 .image-team {
-    padding: 10px;
+  padding: 10px;
 }
 
 .image-team img {
-    max-width: 100%;
-    width: 30px;
-    border: 2px solid #1B1A1B;
+  max-width: 100%;
+  width: 30px;
+  border: 2px solid #1B1A1B;
 }
 
 #game {
-    background-color: brown;
+  background-color: brown;
 }
 
 .vs {
-    font-weight: bold;
-    font-size: 20px;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .point {
-    background-color: transparent;
-    padding: 10px;
-    border: 2px solid #64090D;
-    max-width: 100%;
-    width: 340px;
-    margin: auto;
-    margin-bottom: 10px;
-    border-radius: 10px;
+  background-color: transparent;
+  padding: 10px;
+  border: 2px solid #64090D;
+  max-width: 100%;
+  width: 340px;
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
 .box-no {
-    background-color: #1B1A1B;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: bold;
+  background-color: #1B1A1B;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
 }

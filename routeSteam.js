@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express';
+import passport from 'passport';
 const router = express.Router();
-const passport = require("passport");
 
-module.exports = app => {
+export default (app) => {
 	router.get("/auth/steam", passport.authenticate("steam"));
 
 	router.get("/auth/steam/return",  

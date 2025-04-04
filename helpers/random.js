@@ -1,14 +1,14 @@
 const help = {};
 
-help.randomNumber = () => {
-    //const character = "abcdefghijklmnopqrstuvwxyz0123456789"
-    const character = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-    let randomNumber = 0
+help.randomString = () => {
+    const characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    let randomStr = '';
+    
     for (let i = 0; i < 15; i++) {
-        randomNumber += character.charAt(Math.floor(Math.random() * character.length))
+        randomStr += characters.charAt(Math.floor(Math.random() * characters.length));
     }
 
-    return randomNumber
+    return randomStr;
 }
 
-module.exports = help
+export default help;

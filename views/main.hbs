@@ -21,7 +21,7 @@
 					<a href="/play.html" style="background-color: brown;">Home</a>
 					<a href="">Rules</a>
 					<a href="/play.html/stats">Stats</a>
-					<a href="/play.html/game">Games</a>
+					
 				</div>
 
 				<div class="box-carr"> 
@@ -137,6 +137,12 @@
 				</div>
 				<hr>
 
+				<div>
+					{{#if showAdminButton}}
+						<a href="/play.html/admin/teams">Editar Partidas</a>
+					{{/if }}
+				</div>
+
 				<div class="stats-main">
 					<span class="title-main">Stats (Global)</span>
 					<hr/>
@@ -163,7 +169,7 @@
 						{{#each steam}}
 						<div class="user-steam">
 							<a href="{{this.profileurl}}" target="_blank"><img src="{{this.avatar}}"></a>
-							<span>{{this.displayName}}</span>
+							<span><a href="/play.html/player?steam={{steamId}}">{{this.displayName}}</a></span>
 							<div class="elo">
 								<span><span class="cor">[</span> <span class="elo-number">{{this.elo}}</span> <span class="cor">]</span></span>
 							</div>
